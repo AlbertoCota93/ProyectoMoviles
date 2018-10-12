@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityLolHome">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/activity_lol_home_perfil"
+        android:layout_width="@dimen/profile_width"
+        android:layout_height="@dimen/profile_height"
+        android:src="@drawable/Perfillol"
+        android:layout_marginTop="@dimen/profile_margin_top"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+
+    <TextView
+        android:id="@+id/activity_lol_home_text_summonerd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jumbee"
+        android:layout_toRightOf="@+id/activity_lol_home_perfil"
+        android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        android:textSize="@dimen/activity_lol_home_text_size_summonerid"
+        android:textStyle="bold"
+        />
+
+    <Spinner
+        android:id="@+id/activity_lol_home_summoner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="hi,hola"
+        android:layout_toRightOf="@+id/activity_lol_home_text_summonerd"
+        android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+
+    <RadioButton
+        android:id="@+id/activity_lol_home_ranked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duo"
+        android:textSize="20dp"
+        android:layout_toRightOf="@id/activity_lol_home_text_summonerd"
+        android:layout_below="@+id/activity_lol_home_summoner"
+        android:layout_marginTop="@dimen/profile_margin_top"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/activity_lol_home_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"
+            />
+
+        
+
+    </RelativeLayout>
+</LinearLayout>

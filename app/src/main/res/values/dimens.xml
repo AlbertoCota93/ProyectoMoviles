@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="profile_height">150dp</dimen>
+    <dimen name="profile_width">120dp</dimen>
+    <dimen name="profile_margin_top">60dp</dimen>
+    <dimen name="profile_margin_left">20dp</dimen>
+    <dimen name="acitivy_lol_home_text_margintop">80dp</dimen>
+    <dimen name="activity_lol_home_text_size_summonerid">20sp</dimen>
+</resources>
