@@ -6,4 +6,6 @@
     <dimen name="profile_margin_left">20dp</dimen>
     <dimen name="acitivy_lol_home_text_margintop">80dp</dimen>
     <dimen name="activity_lol_home_text_size_summonerid">20sp</dimen>
+    <dimen name="activity_lol_in_game_players">80dp</dimen>
+    <dimen name="activity_lol_in_game_summoners">30dp</dimen>
 </resources>
