@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityLolHome" />
-        <activity android:name=".ActivityLolInGame"></activity>
+        <activity android:name=".ActivityLolInGame" />
+        <activity android:name=".ActivityLolTeams" />
+        <activity android:name=".ActivityLogin"></activity>
     </application>
 
 </manifest>

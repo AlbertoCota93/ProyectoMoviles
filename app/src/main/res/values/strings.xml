@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProyectoMoviles</string>
+    <string name="log_in_email">Email Address</string>
+    <string name="log_in_password">Password</string>
 </resources>
