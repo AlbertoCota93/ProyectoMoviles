@@ -6,27 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActivityDotaHome">
+    tools:context=".ActivityDotaHistory">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/activity_dota_home_perfil"
-            android:layout_width="@dimen/profile_width"
-            android:layout_height="@dimen/profile_height"
-            android:src="@drawable/perfil_dota"
-            android:layout_marginTop="@dimen/profile_margin_top"
-            android:layout_marginLeft="@dimen/profile_margin_left"
-            />
 
         <TextView
-            android:id="@+id/activity_dota_home_account"
+            android:id="@+id/activity_dota_matchHistory_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_Dota_Profile"
-            android:layout_toRightOf="@+id/activity_dota_home_perfil"
+            android:text="@string/activity_Dota_MatchHistory"
             android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
             android:layout_marginLeft="@dimen/profile_margin_left"
             android:textSize="@dimen/activity_lol_home_text_size_summonerid"
@@ -47,57 +38,40 @@
             android:src="@drawable/background" />
 
         <TextView
-            android:id="@+id/activity_dota_home_level"
+            android:id="@+id/activity_dota_matchHistory_last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_Dota_Level"
+            android:text="@string/activity_Dota_MatchHistory_lastMatches"
             android:textColor="@android:color/white"
             android:textSize="@dimen/activity_dota_text"
             />
         <TextView
-            android:layout_marginLeft="@dimen/profile_margin_left"
-            android:layout_toEndOf="@id/activity_dota_home_level"
+            android:layout_below="@id/activity_dota_matchHistory_last"
+            android:id="@+id/activity_dota_matchHistory_id1"
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_Dota_Level_Number"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/activity_dota_text"
-            />
-
-        <TextView
-            android:layout_below="@id/activity_dota_home_level"
-            android:id="@+id/activity_dota_home_last_match"
-            android:layout_marginTop="@dimen/profile_margin_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_Dota_LastMatch"
+            android:text="@string/activity_Dota_MatchHistory_id1"
             android:textColor="@android:color/white"
             android:textSize="@dimen/activity_dota_text"
             />
         <ImageView
             android:id="@+id/activity_dota_last_match_hero_picture"
-            android:layout_below="@id/activity_dota_home_last_match"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_dota_matchHistory_last"
+            android:layout_toEndOf="@id/activity_dota_matchHistory_id1"
+            android:layout_width="@dimen/dota_matchHistory_height"
+            android:layout_height="@dimen/dota_matchHistory_height"
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
+            android:layout_marginLeft="@dimen/stats_margin_left"
             android:src="@drawable/last_game_hero"/>
         <TextView
-            android:id="@+id/activity_dota_last_match_hero"
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
+            android:id="@+id/activity_dota_matchHistory_side1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/activity_dota_home_last_match"
+            android:layout_below="@id/activity_dota_matchHistory_last"
             android:layout_toEndOf="@id/activity_dota_last_match_hero_picture"
-            android:text="@string/activity_Dota_LastMatch_Hero"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="@dimen/stats_margin_left"
-            android:textSize="@dimen/activity_dota_text"
-            />
-        <TextView
-            android:id="@+id/activity_dota_last_match_kd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/activity_dota_last_match_hero"
-            android:layout_toEndOf="@id/activity_dota_last_match_hero_picture"
-            android:text="@string/activity_Dota_LastMatch_kd"
+            android:text="@string/activity_Dota_MatchHistory_Radiant"
             android:textColor="@android:color/white"
             android:layout_marginLeft="@dimen/stats_margin_left"
             android:textSize="@dimen/activity_dota_text"

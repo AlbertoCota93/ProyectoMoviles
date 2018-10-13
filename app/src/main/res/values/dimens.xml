@@ -9,4 +9,7 @@
     <dimen name="activity_lol_home_text_size_summonerid">20sp</dimen>
     <dimen name="activity_dota_text">20sp</dimen>
     <dimen name="margin_dota">10dp</dimen>
+    <dimen name="dota_matchHistory_width">30dp</dimen>
+    <dimen name="dota_matchHistory_height">30dp</dimen>
+    <dimen name="dota_matchHistory_margin_top">20dp</dimen>
 </resources>

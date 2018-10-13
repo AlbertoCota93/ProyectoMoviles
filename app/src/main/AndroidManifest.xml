@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityLolHome" />
-        <activity android:name=".ActivityDotaHome"></activity>
+        <activity android:name=".ActivityDotaHome" />
+        <activity android:name=".ActivityDotaHistory"></activity>
     </application>
 
 </manifest>
