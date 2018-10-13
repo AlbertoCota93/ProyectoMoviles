@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityLolHome">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/activity_lol_home_perfil"
+            android:layout_width="@dimen/profile_width"
+            android:layout_height="@dimen/profile_height"
+            android:src="@drawable/perfil_dota"
+            android:layout_marginTop="@dimen/profile_margin_top"
+            android:layout_marginLeft="@dimen/profile_margin_left"
+            />
+
+        <TextView
+            android:id="@+id/activity_lol_home_text_summonerd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_Dota_Profile"
+            android:layout_toRightOf="@+id/activity_lol_home_perfil"
+            android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+            android:layout_marginLeft="@dimen/profile_margin_left"
+            android:textSize="@dimen/activity_lol_home_text_size_summonerid"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_dota">
+
+        <ImageView
+            android:id="@+id/activity_lol_home_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background" />
+
+        <TextView
+            android:id="@+id/activity_dota_home_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_Dota_Level"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/activity_dota_text"
+            />
+        <TextView
+            android:layout_marginLeft="@dimen/profile_margin_left"
+            android:layout_toEndOf="@id/activity_dota_home_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_Dota_Level_Number"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/activity_dota_text"
+            />
+
+        <TextView
+            android:layout_below="@id/activity_dota_home_level"
+            android:id="@+id/activity_dota_home_last_match"
+            android:layout_marginTop="@dimen/profile_margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_Dota_LastMatch"
+            android:textColor="@android:color/white"
+            />
+        <ImageView
+            android:id="@+id/activity_dota_last_match_hero_picture"
+            android:layout_below="@id/activity_dota_home_last_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/last_game_hero"/>
+        <TextView
+            android:id="@+id/activity_dota_last_match_hero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_dota_home_last_match"
+            android:layout_toEndOf="@id/activity_dota_last_match_hero_picture"
+            android:text="@string/activity_Dota_LastMatch_Hero"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="@dimen/stats_margin_left"
+            android:textSize="@dimen/activity_dota_text"
+            />
+        <TextView
+            android:id="@+id/activity_dota_last_match_kd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_dota_last_match_hero"
+            android:layout_toEndOf="@id/activity_dota_last_match_hero_picture"
+            android:text="@string/activity_Dota_LastMatch_kd"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="@dimen/stats_margin_left"
+            android:textSize="@dimen/activity_dota_text"
+            />
+
+            
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ProyectoMoviles</string>
+    <string name="activity_Dota_Profile">Misaki Taro</string>
+    <string name="activity_Dota_Level">Level:</string>
+    <string name="activity_Dota_LastMatch">Last Match</string>
+    <string name="activity_Dota_LastMatch_Hero">Earthshaker</string>
+    <string name="activity_Dota_LastMatch_kd">7/0/15</string>
+    <string name="activity_Dota_Total_Matches">Total Matches</string>
+    <string name="activity_Dota_Level_Number">200</string>
 </resources>

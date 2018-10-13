@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityLolHome"></activity>
+        <activity android:name=".ActivityLolHome" />
+        <activity android:name=".ActivityDotaHome"></activity>
     </application>
 
 </manifest>
