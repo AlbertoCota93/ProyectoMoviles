@@ -59,6 +59,8 @@ public class AdapterSummoner extends RecyclerView.Adapter<AdapterSummoner.MyView
 
         Summoner summoner = summoners.get(position);
 
+        Log.d("Summoners", String.valueOf("Pinta a " + summoner.getSummoner()));
+
         myViewHolder.summonerName.setText(summoner.getSummoner());
 
         new DownloadImageTask(myViewHolder.champion).execute(summoner.getChampion());
