@@ -16,4 +16,10 @@
     <string name="activity_Dota_MatchHistory_id3">1020304050</string>
     <string name="activity_Dota_MatchHistory_id4">5060708090</string>
 
+    <array name="activity_dota_matchHistory_array">
+        <item>match 1</item>
+        <item>match 2</item>
+        <item>match 3</item>
+        <item>match 4</item>
+    </array>
 </resources>
