@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iteso.proyectomoviles.Beans.AdapterSummoner;
 import com.iteso.proyectomoviles.Beans.Summoner;
 
 import java.util.ArrayList;
@@ -167,7 +168,7 @@ public class FragmenInGame extends Fragment {
         recyclerViewRed.setAdapter(adapterSummoner);
 
 
-        return inflater.inflate(R.layout.fragment_in_game, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -1,4 +1,4 @@
-package com.iteso.proyectomoviles;
+package com.iteso.proyectomoviles.Beans;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iteso.proyectomoviles.Beans.Summoner;
+import com.iteso.proyectomoviles.R;
 
 import java.io.InputStream;
 import java.util.List;
