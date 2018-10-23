@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,12 +16,11 @@
             android:id="@+id/activity_dota_matchHistory_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_Dota_MatchHistory"
-            android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
             android:layout_marginLeft="@dimen/profile_margin_left"
+            android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+            android:text="@string/activity_Dota_MatchHistory"
             android:textSize="@dimen/activity_lol_home_text_size_summonerid"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -36,16 +34,14 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/background" />
+
         <ListView
             android:id="@+id/activity_dota_matchHistory_list"
+            style="@style/dota_listView_Style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="false"
             />
-
-
-
-
 
     </RelativeLayout>
 </LinearLayout>

@@ -19,4 +19,14 @@
     <string name="activity_Dota_MatchHistory_id4">5060708090</string>
     <string name="activity_Dota_ProTeams_Title">DotA 2 Pro Teams</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <array name="activity_dota_matchHistory_array">
+        <item>match 1</item>
+        <item>match 2</item>
+        <item>match 3</item>
+        <item>match 4</item>
+    </array>
+
 </resources>
