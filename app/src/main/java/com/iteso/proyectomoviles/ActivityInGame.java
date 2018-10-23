@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.iteso.proyectomoviles.Beans.Summoner;
+import com.iteso.proyectomoviles.beans.Summoner;
 
 import java.util.ArrayList;
 
