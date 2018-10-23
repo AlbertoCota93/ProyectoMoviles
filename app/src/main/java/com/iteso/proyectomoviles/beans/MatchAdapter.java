@@ -9,6 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iteso.proyectomoviles.beans.MatchList;
+import com.iteso.proyectomoviles.beans.MatchAdapter;
+
 import com.iteso.proyectomoviles.R;
 
 public class MatchAdapter extends BaseAdapter {
