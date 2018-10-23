@@ -10,11 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-<<<<<<< HEAD:app/src/main/java/com/iteso/proyectomoviles/Beans/AdapterSummoner.java
 import com.iteso.proyectomoviles.R;
-=======
->>>>>>> f0fbbcca7f5e610b8e99332d7b095195f334e53f:app/src/main/java/com/iteso/proyectomoviles/AdapterSummoner.java
 
 import java.io.InputStream;
 import java.util.List;
