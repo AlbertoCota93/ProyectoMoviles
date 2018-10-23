@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DotaHome extends Fragment {
+public class DotaHome extends android.support.v4.app.Fragment {
 
 
     public DotaHome() {

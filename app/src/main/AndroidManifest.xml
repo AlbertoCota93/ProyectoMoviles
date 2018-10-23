@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ActivityLolHome" />
         <activity android:name=".ActivityInGame"/>
         <activity android:name=".ActivityMain"
             android:theme="@style/AppTheme.NoActionBar">

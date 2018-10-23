@@ -15,7 +15,7 @@ import com.iteso.proyectomoviles.beans.TeamList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DotaProTeams extends Fragment {
+public class DotaProTeams extends android.support.v4.app.Fragment {
 
 
     public DotaProTeams() {

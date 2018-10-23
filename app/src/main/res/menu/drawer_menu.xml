@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="Home" />
-        <item
-            android:id="@+id/nav_history"
-            android:icon="@drawable/ic_history"
-            android:title="History" />
-        <item
-            android:id="@+id/nav_pros"
-            android:icon="@drawable/ic_pros"
-            android:title="Pro teams" />
-        <item
-            android:id="@+id/nav_champs"
-            android:icon="@drawable/ic_profile"
-            android:title="Champs" />
-    </group>
+    tools:showIn="navigation_view">
+
+    <item android:title="Lol">
+        <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="Home" />
+            <item
+                android:id="@+id/nav_history"
+                android:icon="@drawable/ic_history"
+                android:title="History" />
+            <item
+                android:id="@+id/nav_pros"
+                android:icon="@drawable/ic_pros"
+                android:title="Pro teams" />
+            <item
+                android:id="@+id/nav_champs"
+                android:icon="@drawable/ic_profile"
+                android:title="Champs" />
+        </menu>
+    </item>
+    <item android:title="Dota">
+        <menu>
+            <item
+                android:id="@+id/nav_dota_home"
+                android:icon="@drawable/ic_home"
+                android:title="Home" />
+
+            <item
+                android:id="@+id/nav_dota_history"
+                android:icon="@drawable/ic_history"
+                android:title="Match History" />
+
+            <item
+                android:id="@+id/nav_dota_pors"
+                android:icon="@drawable/ic_pros"
+                android:title="Pro teams" />
+        </menu>
+    </item>
 </menu>
