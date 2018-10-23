@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class ActivityDotaHistory extends AppCompatActivity {
 
     ListView listView;
-    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

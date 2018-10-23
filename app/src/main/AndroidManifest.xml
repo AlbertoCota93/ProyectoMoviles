@@ -16,7 +16,11 @@
         <activity android:name=".ActivityLolHome" />
         <activity android:name=".ActivityDotaHome" />
         <activity android:name=".ActivityDotaHistory"></activity>
+<<<<<<< HEAD
         <activity android:name=".ActivityLolHistory">
+=======
+        <activity android:name=".ActivityInGame">
+>>>>>>> ac35e2f829025c5eea0a89ecdb3534a9eb2b53bf
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +28,7 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".Activity_Dota_Pro_Teams"></activity>
     </application>
 
 </manifest>

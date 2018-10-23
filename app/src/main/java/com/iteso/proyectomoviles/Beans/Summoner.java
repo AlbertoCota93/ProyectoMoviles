@@ -1,4 +1,4 @@
-package com.iteso.proyectomoviles.Beans;
+package com.iteso.proyectomoviles.beans;
 
 public class Summoner {
 

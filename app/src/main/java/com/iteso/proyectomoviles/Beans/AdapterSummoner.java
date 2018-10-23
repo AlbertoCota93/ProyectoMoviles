@@ -11,7 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD:app/src/main/java/com/iteso/proyectomoviles/Beans/AdapterSummoner.java
 import com.iteso.proyectomoviles.R;
+=======
+import com.iteso.proyectomoviles.beans.Summoner;
+>>>>>>> ac35e2f829025c5eea0a89ecdb3534a9eb2b53bf:app/src/main/java/com/iteso/proyectomoviles/AdapterSummoner.java
 
 import java.io.InputStream;
 import java.util.List;
