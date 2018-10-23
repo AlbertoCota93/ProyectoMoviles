@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActivityDotaHistory">
+    tools:context=".DotaProTeams">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
 
 
         <TextView
-            android:id="@+id/activity_dota_proTeams_title"
+            android:id="@+id/fragment_dota_proTeams_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_Dota_ProTeams_Title"
@@ -37,7 +37,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/background" />
         <ListView
-            android:id="@+id/activity_dota_proTeams_list"
+            android:id="@+id/fragment_dota_proTeams_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="false"

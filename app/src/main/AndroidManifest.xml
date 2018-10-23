@@ -14,8 +14,6 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ActivityLolHome" />
-        <activity android:name=".ActivityDotaHome" />
-        <activity android:name=".ActivityDotaHistory"></activity>
         <activity android:name=".ActivityInGame"/>
         <activity android:name=".ActivityMain"
             android:theme="@style/AppTheme.NoActionBar">
@@ -27,7 +25,6 @@
         <activity android:name=".ActivityLolInGame" />
         <activity android:name=".ActivityLolTeams" />
         <activity android:name=".ActivityLogin"></activity>
-        <activity android:name=".Activity_Dota_Pro_Teams"></activity>
     </application>
 
 </manifest>

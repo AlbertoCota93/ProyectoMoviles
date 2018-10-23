@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActivityDotaHistory">
+    tools:context=".DotaMatchHistory">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 
 
         <TextView
-            android:id="@+id/activity_dota_matchHistory_title"
+            android:id="@+id/fragment_dota_matchHistory_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/profile_margin_left"
@@ -36,7 +36,7 @@
             android:src="@drawable/background" />
 
         <ListView
-            android:id="@+id/activity_dota_matchHistory_list"
+            android:id="@+id/fragment_dota_matchHistory_list"
             style="@style/dota_listView_Style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
