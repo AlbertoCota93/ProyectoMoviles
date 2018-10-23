@@ -62,6 +62,13 @@ public class ActivityMain extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new DotaHome()).commit();
                         break;
+                    case R.id.nav_in_game:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                                new FragmenInGame()).commit();
+                        break;
+                    case R.id.nav_history:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                                new FragmentLolHistory()).commit();
                     case R.id.nav_dota_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new DotaMatchHistory()).commit();

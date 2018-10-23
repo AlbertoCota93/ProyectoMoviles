@@ -72,8 +72,11 @@
                 android:id="@+id/activity_lol_home_main"
                 android:layout_width="@dimen/profile_width"
                 android:layout_height="@dimen/profile_height"
-                android:layout_centerInParent="true"
-                android:src="@drawable/perfillol" />
+
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="55dp"
+                android:src="@drawable/camille_icon" />
 
             <TextView
                 android:id="@+id/activity_lol_home_text_main"
@@ -81,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activity_lol_home_main"
                 android:layout_centerInParent="true"
-                android:text="CENTER"
+                android:text="Camille"
                 android:textColor="#FFFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -92,25 +95,30 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/activity_lol_home_text_main"
                 android:layout_centerInParent="true"
-                android:text="Puntuacion maestria"
+                android:text="Level 7"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="#FFFF" />
 
             <ImageView
                 android:id="@+id/activity_lol_home_honor_image"
                 android:layout_width="@dimen/profile_width"
                 android:layout_height="@dimen/profile_height"
-                android:layout_alignBottom="@+id/activity_lol_home_text_description"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/perfillol" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/honor_level_5" />
 
             <TextView
                 android:id="@+id/activity_lol_home_honor_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/activity_lol_home_text_description"
-                android:layout_marginLeft="36dp"
-                android:text="NIVEL 4"
-                android:textColor="#FFFF" />
+                android:layout_marginStart="30dp"
+                android:text="@string/activity_Lol_Home_honor5"
+                android:textColor="#FFFF"
+                android:textStyle="bold"
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/activity_lol_home_rank"
@@ -118,18 +126,19 @@
                 android:layout_height="@dimen/profile_height"
                 android:layout_alignBottom="@+id/activity_lol_home_text_description"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/perfillol" />
+                android:src="@drawable/platino" />
 
             <TextView
                 android:id="@+id/activity_lol_home_rank_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/activity_lol_home_rank"
-                android:layout_toRightOf="@id/activity_lol_home_text_description"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/activity_lol_home_text_description"
+                android:layout_marginEnd="13dp"
                 android:text="Platino 4"
                 android:textColor="#FFFF"
-                android:layout_marginLeft="170dp"
-                />
+                android:textSize="24dp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
 
