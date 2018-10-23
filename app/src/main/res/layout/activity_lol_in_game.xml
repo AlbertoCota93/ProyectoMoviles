@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityLolInGame">
+
+    <TextView
+        android:id="@+id/activity_lol_in_game_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="In game"
+        android:textColor="#000"
+        android:textSize="30dp" />
+
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_t1_p1"
+        android:layout_width="@dimen/activity_lol_in_game_players"
+        android:layout_height="@dimen/activity_lol_in_game_players"
+        android:src="@drawable/perfillol"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        android:layout_below="@+id/activity_lol_in_game_title"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_p1_s1"
+        android:layout_width="@dimen/activity_lol_in_game_summoners"
+        android:layout_height="@dimen/activity_lol_in_game_summoners"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/activity_lol_in_game_t1_p1"
+        android:layout_marginStart="27dp"
+        android:src="@drawable/perfillol"
+        />
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_p1_s2"
+        android:layout_width="@dimen/activity_lol_in_game_summoners"
+        android:layout_height="@dimen/activity_lol_in_game_summoners"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/activity_lol_in_game_t1_p1"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/perfillol" />
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_t1_p2"
+        android:layout_width="@dimen/activity_lol_in_game_players"
+        android:layout_height="@dimen/activity_lol_in_game_players"
+        android:layout_alignTop="@+id/activity_lol_in_game_t1_p1"
+        android:layout_toEndOf="@+id/activity_lol_in_game_t1_p1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/perfillol" />
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_p2_s1"
+        android:layout_width="@dimen/activity_lol_in_game_summoners"
+        android:layout_height="@dimen/activity_lol_in_game_summoners"
+        android:layout_below="@+id/activity_lol_in_game_t1_p1"
+        android:layout_toEndOf="@+id/activity_lol_in_game_t1_p1"
+        android:src="@drawable/perfillol" />
+
+    <ImageView
+        android:id="@+id/activity_lol_in_game_p2_s2"
+        android:layout_width="@dimen/activity_lol_in_game_summoners"
+        android:layout_height="@dimen/activity_lol_in_game_summoners"
+        android:layout_below="@+id/activity_lol_in_game_t1_p2"
+        android:layout_toRightOf="@id/activity_lol_in_game_p2_s1"
+        android:src="@drawable/perfillol" />
+
+</RelativeLayout>

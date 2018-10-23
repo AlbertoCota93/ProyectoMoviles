@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.iteso.proyectomoviles.Beans.AdapterSummoner;
-import com.iteso.proyectomoviles.Beans.Summoner;
+import com.iteso.proyectomoviles.beans.AdapterSummoner;
+import com.iteso.proyectomoviles.beans.Summoner;
 
 import java.util.ArrayList;
 
