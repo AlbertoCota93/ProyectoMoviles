@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityLolHome">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/activity_lol_home_perfil"
+        android:layout_width="@dimen/profile_width"
+        android:layout_height="@dimen/profile_height"
+        android:src="@drawable/perfillol"
+        android:layout_marginTop="@dimen/profile_margin_top"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+
+    <TextView
+        android:id="@+id/activity_lol_home_text_summonerd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jumbee"
+        android:layout_toRightOf="@+id/activity_lol_home_perfil"
+        android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        android:textSize="@dimen/activity_lol_home_text_size_summonerid"
+        android:textStyle="bold"
+        />
+
+    <Spinner
+        android:id="@+id/activity_lol_home_summoner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/activity_lol_home_text_summonerd"
+        android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+
+    <RadioButton
+        android:id="@+id/activity_lol_home_ranked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duo"
+        android:textSize="20dp"
+        android:layout_toRightOf="@id/activity_lol_home_text_summonerd"
+        android:layout_below="@+id/activity_lol_home_summoner"
+        android:layout_marginTop="@dimen/profile_margin_top"
+        android:layout_marginLeft="@dimen/profile_margin_left"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/activity_lol_home_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background" />
+
+        <ImageView
+            android:id="@+id/activity_lol_home_main"
+            android:layout_width="@dimen/profile_width"
+            android:layout_height="@dimen/profile_height"
+            android:layout_centerInParent="true"
+            android:src="@drawable/perfillol" />
+
+        <TextView
+            android:id="@+id/activity_lol_home_text_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_lol_home_main"
+            android:layout_centerInParent="true"
+            android:text="CENTER"
+            android:textColor="#FFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_lol_home_text_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_lol_home_text_main"
+            android:layout_centerInParent="true"
+            android:text="Puntuacion maestria"
+            android:textColor="#FFFF" />
+
+        <ImageView
+            android:id="@+id/activity_lol_home_honor_image"
+            android:layout_width="@dimen/profile_width"
+            android:layout_height="@dimen/profile_height"
+            android:layout_alignBottom="@+id/activity_lol_home_text_description"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/perfillol" />
+
+        <TextView
+            android:id="@+id/activity_lol_home_honor_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_lol_home_text_description"
+            android:layout_marginLeft="36dp"
+            android:text="NIVEL 4"
+            android:textColor="#FFFF" />
+
+        <ImageView
+            android:id="@+id/activity_lol_home_rank"
+            android:layout_width="@dimen/profile_width"
+            android:layout_height="@dimen/profile_height"
+            android:layout_alignBottom="@+id/activity_lol_home_text_description"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/perfillol" />
+
+        <TextView
+            android:id="@+id/activity_lol_home_rank_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_lol_home_rank"
+            android:layout_toRightOf="@id/activity_lol_home_text_description"
+            android:text="Platino 4"
+            android:textColor="#FFFF"
+            android:layout_marginLeft="170dp"
+            />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">ProyectoMoviles</string>
+    <string name="activity_Dota_Profile">Misaki Taro</string>
+    <string name="activity_Dota_Level">Level:</string>
+    <string name="activity_Dota_LastMatch">Last Match</string>
+    <string name="activity_Dota_LastMatch_Hero">Earthshaker</string>
+    <string name="activity_Dota_LastMatch_kd">7/0/15</string>
+    <string name="activity_Dota_Total_Matches">Total Matches</string>
+    <string name="activity_Dota_Level_Number">200</string>
+    <string name="activity_Dota_MatchHistory">Match History</string>
+    <string name="activity_Dota_MatchHistory_lastMatches">Last 50 Matches</string>
+    <string name="activity_Dota_MatchHistory_Radiant">Radiant</string>
+    <string name="activity_Dota_MatchHistory_Dire">Dire</string>
+    <string name="activity_Dota_MatchHistory_id1">1234567890</string>
+    <string name="activity_Dota_MatchHistory_id2">9876543210</string>
+    <string name="activity_Dota_MatchHistory_id3">1020304050</string>
+    <string name="activity_Dota_MatchHistory_id4">5060708090</string>
+
+    <array name="activity_dota_matchHistory_array">
+        <item>match 1</item>
+        <item>match 2</item>
+        <item>match 3</item>
+        <item>match 4</item>
+    </array>
 </resources>
