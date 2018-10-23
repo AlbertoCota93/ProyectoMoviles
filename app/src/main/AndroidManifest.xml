@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityMain">
+        </activity>
+        <activity android:name=".ActivityLolHome" />
+        <activity android:name=".ActivityDotaHome" />
+        <activity android:name=".ActivityDotaHistory">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityLolHome" />
         <activity android:name=".ActivityLolInGame" />
         <activity android:name=".ActivityLolTeams" />
         <activity android:name=".ActivityLogin"></activity>
