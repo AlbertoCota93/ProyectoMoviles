@@ -21,10 +21,6 @@
                 android:id="@+id/nav_pros"
                 android:icon="@drawable/ic_pros"
                 android:title="Pro teams" />
-            <item
-                android:id="@+id/nav_champs"
-                android:icon="@drawable/ic_profile"
-                android:title="Champs" />
         </menu>
     </item>
     <item android:title="Dota">
