@@ -17,11 +17,13 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DotaMatchHistory extends Fragment {
+public class DotaMatchHistory extends android.support.v4.app.Fragment {
 
     public DotaMatchHistory() {
         // Required empty public constructor
     }
+
+
 
 
     @Override
