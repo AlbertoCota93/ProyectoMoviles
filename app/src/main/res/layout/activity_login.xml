@@ -37,6 +37,15 @@
             android:textColorHint="#FFFFFF"
             android:inputType="textPassword" />
 
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/activity_login_face_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/activity_log_in_pass"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"/>
+
         <android.support.v7.widget.CardView
             android:id="@+id/activity_login_logIn"
             android:layout_width="300dp"
