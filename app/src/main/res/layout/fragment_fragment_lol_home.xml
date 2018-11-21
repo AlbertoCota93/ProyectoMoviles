@@ -18,7 +18,6 @@
                 android:id="@+id/activity_lol_home_perfil"
                 android:layout_width="@dimen/profile_width"
                 android:layout_height="@dimen/profile_height"
-                android:src="@drawable/perfillol"
                 android:layout_marginTop="@dimen/profile_margin_top"
                 android:layout_marginLeft="@dimen/profile_margin_left"
                 />
@@ -27,7 +26,6 @@
                 android:id="@+id/activity_lol_home_text_summonerd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jumbee"
                 android:layout_toRightOf="@+id/activity_lol_home_perfil"
                 android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
                 android:layout_marginLeft="@dimen/profile_margin_left"

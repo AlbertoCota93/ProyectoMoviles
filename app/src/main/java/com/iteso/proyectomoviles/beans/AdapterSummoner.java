@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.iteso.proyectomoviles.R;
 
+import com.iteso.proyectomoviles.beans.Summoner;
+
 import java.io.InputStream;
 import java.util.List;
 
