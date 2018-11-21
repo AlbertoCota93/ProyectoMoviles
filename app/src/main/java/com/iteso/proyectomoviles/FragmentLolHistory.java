@@ -26,6 +26,6 @@ public class FragmentLolHistory extends android.support.v4.app.Fragment {
         MatchAdapter matchAdapter = new MatchAdapter(getActivity(),matchList);
         listView.setAdapter(matchAdapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lol_history, container, false);
+        return view;
     }
 }

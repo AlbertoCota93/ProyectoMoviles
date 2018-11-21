@@ -34,7 +34,7 @@ public class DotaProTeams extends android.support.v4.app.Fragment {
         final TeamList teamList = new TeamList();
         TeamAdapter teamAdapter = new TeamAdapter(getActivity(),teamList);
         listView.setAdapter(teamAdapter);
-        return inflater.inflate(R.layout.fragment_dota_pro_teams, container, false);
+        return view;
     }
 
 }
