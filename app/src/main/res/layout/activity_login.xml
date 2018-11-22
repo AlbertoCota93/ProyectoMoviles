@@ -23,7 +23,8 @@
             android:drawableLeft="@drawable/ic_user"
             android:hint="Email"
             android:textColorHint="#FFFFFF"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="@color/colorWhite"/>
 
         <EditText
             android:id="@+id/activity_log_in_pass"
@@ -35,7 +36,9 @@
             android:drawableLeft="@drawable/ic_pass"
             android:hint="@string/log_in_password"
             android:textColorHint="#FFFFFF"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/colorWhite"
+            />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/activity_login_face_login"

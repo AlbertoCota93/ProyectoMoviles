@@ -45,7 +45,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 getSharedPreferences(MYPREFERENCES, MODE_PRIVATE);
 
         User user = new User();
-        user.setUser(sharedPreferences.getString("NAME", "UNKNOWN"));
+        user.setEmail(sharedPreferences.getString("EMAIL", "UNKNOWN"));
         user.setPassword(sharedPreferences.getString("PWD", "1234"));
         user.setLogged(sharedPreferences.getBoolean("LOGGER", false));
         return user;

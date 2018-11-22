@@ -1,12 +1,14 @@
 package com.iteso.proyectomoviles;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -22,6 +24,8 @@ public class ActivityLogin extends AppCompatActivity {
     //private Button logIn;
     private CardView card;
     CallbackManager callbackManager;
+    private EditText email;
+    private EditText pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +43,14 @@ public class ActivityLogin extends AppCompatActivity {
                 finish();
             }
         });*/
+        email = findViewById(R.id.activity_log_in_email);
+        pwd = findViewById(R.id.activity_log_in_pass);
         card = findViewById(R.id.activity_login_logIn);
 
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveSharedPreferences();
                 Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
                 startActivity(intent);
                 finish();
@@ -90,5 +97,15 @@ public class ActivityLogin extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private void saveSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                ActivitySplashScreen.MYPREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("EMAIL", email.getText().toString());
+        editor.putString("FWD", pwd.getText().toString());
+        editor.putBoolean("LOGGER", true);
+        editor.apply();
     }
 }

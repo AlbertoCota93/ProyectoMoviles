@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
-    private String user;
+    private String email;
     private String password;
     private boolean isLogged;
 
@@ -14,21 +14,21 @@ public class User implements Parcelable {
     @Override
     public String toString() {
         return "User{" +
-                "user='" + user + '\'' +
+                "user='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", isLogged=" + isLogged +
                 '}';
     }
 
     protected User(Parcel in) {
-        user = in.readString();
+        email = in.readString();
         password = in.readString();
         isLogged = in.readByte() != 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(user);
+        dest.writeString(email);
         dest.writeString(password);
         dest.writeByte((byte) (isLogged ? 1 : 0));
     }
@@ -50,12 +50,12 @@ public class User implements Parcelable {
         }
     };
 
-    public String getUser() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setEmail(String user) {
+        this.email = user;
     }
 
     public String getPassword() {
