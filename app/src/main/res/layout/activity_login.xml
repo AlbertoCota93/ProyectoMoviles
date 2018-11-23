@@ -14,6 +14,16 @@
         android:layout_height="0dp"
         android:layout_weight=".8">
 
+        <ImageView
+            android:id="@+id/activity_login_lotalogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lotalogo"
+            android:layout_above="@+id/activity_log_in_email"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="50dp"
+            />
+
         <EditText
             android:id="@+id/activity_log_in_email"
             android:layout_width="200dp"
