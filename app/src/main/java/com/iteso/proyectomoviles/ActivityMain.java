@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +33,11 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final String iconId = getIntent().getExtras().getString("IconId");
+        final String level = getIntent().getExtras().getString("level");
+        final String id = getIntent().getExtras().getString("id");
+        final String name = getIntent().getExtras().getString("name");
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -51,8 +59,25 @@ public class ActivityMain extends AppCompatActivity {
                     case R.id.nav_home:
                         //Intent intent = new Intent(ActivityMain.this, ActivityLolHome.class);
                         //startActivity(intent);
-                            getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                    new FragmentLolHome()).commit();
+
+                        FragmentManager manager = getSupportFragmentManager();
+
+                        FragmentTransaction transaction = manager.beginTransaction();
+
+                        FragmentLolHome fHome = new FragmentLolHome();
+
+                        Log.e("INSIDECASE", iconId);
+
+                        Bundle summonerBundle = new Bundle();
+                        summonerBundle.putString("IconId", iconId);
+                        summonerBundle.putString("level", level);
+                        summonerBundle.putString("id", id);
+                        summonerBundle.putString("name", name);
+                        fHome.setArguments(summonerBundle);
+                        transaction.add(R.id.container, fHome);
+                        transaction.replace(R.id.container, fHome);
+                        transaction.commit();
+
                         break;
                     case R.id.nav_pros:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
@@ -89,8 +114,21 @@ public class ActivityMain extends AppCompatActivity {
         toggle.syncState();
 
         if(savedInstanceState == null ) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,
-            new FragmentLolHome()).commit();
+
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            FragmentLolHome fHome = new FragmentLolHome();
+
+            Bundle summonerBundle = new Bundle();
+            summonerBundle.putString("IconId", iconId);
+            summonerBundle.putString("level", level);
+            summonerBundle.putString("id", id);
+            summonerBundle.putString("name", name);
+            fHome.setArguments(summonerBundle);
+            transaction.add(R.id.container, fHome);
+            transaction.replace(R.id.container, fHome);
+            transaction.commit();
+
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }

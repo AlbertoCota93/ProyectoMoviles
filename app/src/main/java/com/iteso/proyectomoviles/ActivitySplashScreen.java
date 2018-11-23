@@ -3,6 +3,8 @@ package com.iteso.proyectomoviles;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +28,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
+    String iconId, level, id, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +40,20 @@ public class ActivitySplashScreen extends AppCompatActivity {
             public void run() {
                 User user = loadPreferences();
                 if(user.isLogged()) {
-                    Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
-                    startActivity(intent);
-                    finish();
+                    new MyAsyncTask().execute();
                 } else {
-                    Intent intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
-                    startActivity(intent);
-                    finish();
+                    new MyAsyncTask().execute();//Quitar esto alv cuando este lo de la base de datos
+                    //Intent intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
+                    //startActivity(intent);
+                    //finish();
                 }
             }
         };
 
         Timer timer = new Timer();
-        timer.schedule(task, 2000);
+
+
+        timer.schedule(task, 5000);
 
     }
 
@@ -72,7 +76,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
                 Log.e("MyASYNCTASKMONIT", "Entro");
 
-                String key = "RGAPI-007cfc79-42da-4f1a-bcc1-aecbd212c712";
+                String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
                 String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
 
                 URL url = new URL(urlProfile);
@@ -83,7 +87,11 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 Log.e("JSONOBJECTRES", jsonObject.toString());
 
                 Log.e("JSONOBJECTRES", jsonObject.optString("profileIconId"));
-                Log.e("JSONOBJECTRES", jsonObject.optString("summonerLevel"));
+
+                iconId = jsonObject.optString("profileIconId");
+                level = jsonObject.optString("summonerLevel");
+                id = jsonObject.getString("id");
+                name = jsonObject.getString("name");
 
                 String urlIcon = "http://ddragon.leagueoflegends.com/cdn/8.23.1/img/profileicon/" + jsonObject.optString("profileIconId") + ".png";
                 Log.e("URLICON", urlIcon);
@@ -102,7 +110,15 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
         protected void onPostExecute(Void aVoid) {
 
-            super.onPostExecute(aVoid);
+            Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putString("IconId", iconId);
+            mBundle.putString("level", level);
+            mBundle.putString("id", id);
+            mBundle.putString("name", name);
+            intent.putExtras(mBundle);
+            startActivity(intent);
+            finish();
         }
 
 

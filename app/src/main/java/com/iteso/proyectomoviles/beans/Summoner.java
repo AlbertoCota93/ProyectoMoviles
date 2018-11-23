@@ -3,7 +3,15 @@ package com.iteso.proyectomoviles.beans;
 public class Summoner {
 
     String summoner, champion, spell1, spell2;
-    String summonerIcon, level, rank;
+    String summonerIcon, level, rank, id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
