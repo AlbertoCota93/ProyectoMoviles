@@ -3,14 +3,14 @@ package com.iteso.proyectomoviles.beans;
 public class Summoner {
 
     String summoner, champion, spell1, spell2;
-    String summonerIcon, level, rank, id, tier;
+    String summonerIcon, level, rankSolo, id, tierSolo, rankFlex, tierFlex;
 
-    public String getTier() {
-        return tier;
+    public String getTierSolo() {
+        return tierSolo;
     }
 
-    public void setTier(String tier) {
-        this.tier = tier;
+    public void setTierSolo(String tier) {
+        this.tierSolo = tier;
     }
 
     public String getId() {
@@ -20,17 +20,28 @@ public class Summoner {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Summoner{" +
-                "summoner='" + summoner + '\'' +
-                ", champion='" + champion + '\'' +
-                ", spell1='" + spell1 + '\'' +
-                ", spell2='" + spell2 + '\'' +
-                ", summonerIcon='" + summonerIcon + '\'' +
-                ", level='" + level + '\'' +
-                ", rank='" + rank + '\'' +
-                '}';
+    public String getRankSolo() {
+        return rankSolo;
+    }
+
+    public void setRankSolo(String rankSolo) {
+        this.rankSolo = rankSolo;
+    }
+
+    public String getRankFlex() {
+        return rankFlex;
+    }
+
+    public void setRankFlex(String rankFlex) {
+        this.rankFlex = rankFlex;
+    }
+
+    public String getTierFlex() {
+        return tierFlex;
+    }
+
+    public void setTierFlex(String tierFlex) {
+        this.tierFlex = tierFlex;
     }
 
     public String getSummonerIcon() {
@@ -47,14 +58,6 @@ public class Summoner {
 
     public void setLevel(String level) {
         this.level = level;
-    }
-
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
     }
 
     public String getSummoner() {

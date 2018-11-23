@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.iteso.proyectomoviles.beans.Summoner;
@@ -22,6 +24,9 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
 
     ImageView summonerIcon;
     TextView summonerName, summonerLevel, summonerTier;
+    RadioButton queue;
+
+    Summoner summoner;
 
     @Nullable
     @Override
@@ -32,32 +37,52 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         summonerName = view.findViewById(R.id.activity_lol_home_text_summonerd);
         summonerLevel = view.findViewById(R.id.activity_lol_home_level);
         summonerTier = view.findViewById(R.id.activity_lol_home_rank_text);
+        queue = view.findViewById(R.id.activity_lol_home_ranked);
 
-        Summoner summoner = new Summoner();
+        summoner = new Summoner();
 
         Log.e("HOME", "ENTRO A HOME");
 
         Bundle summonerBundle = getArguments();
-        Log.e("FRAGMENTICON", summonerBundle.getString("IconId"));
-        Log.e("FRAGMENTICON", summonerBundle.getString("level"));
-        Log.e("FRAGMENTICON", summonerBundle.getString("id"));
-        Log.e("FRAGMENTICON", summonerBundle.getString("name"));
 
         summoner.setSummonerIcon(summonerBundle.getString("IconId"));
         summoner.setSummoner(summonerBundle.getString("name"));
         summoner.setLevel(summonerBundle.getString("level"));
         summoner.setId(summonerBundle.getString("id"));
-        summoner.setRank(summonerBundle.getString("rank"));
-        summoner.setTier(summonerBundle.getString("tier"));
+        summoner.setRankSolo(summonerBundle.getString("rankSolo"));
+        summoner.setTierSolo(summonerBundle.getString("tierSolo"));
+        summoner.setRankFlex(summonerBundle.getString("rankFlex"));
+        summoner.setTierFlex(summonerBundle.getString("tierFlex"));
 
         String urlIcon = "http://ddragon.leagueoflegends.com/cdn/8.23.1/img/profileicon/" + summoner.getSummonerIcon() + ".png";
         Picasso.with(getActivity().getApplicationContext()).load(urlIcon).fit().into(summonerIcon);
         summonerName.setText(summoner.getSummoner());
         summonerLevel.setText("Level " + summoner.getLevel());
-        summonerTier.setText(summoner.getTier() + " " + summoner.getRank());
+
+        summonerTier.setText(summoner.getTierSolo() + " " + summoner.getRankSolo());
+
+        queue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!queue.isSelected()) {
+
+                    summonerTier.setText(summoner.getTierSolo() + " " + summoner.getRankSolo());
+
+                    queue.setChecked(true);
+                    queue.setSelected(true);
+                } else {
+
+                    summonerTier.setText(summoner.getTierFlex());
+
+                    queue.setChecked(false);
+                    queue.setSelected(false);
+                }
+            }
+        });
 
         return view;
     }
+
 
 
 }

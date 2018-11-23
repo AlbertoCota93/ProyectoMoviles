@@ -29,7 +29,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
-    String iconId, level, id, name, tier, rank;
+    String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,19 +96,27 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
                 URL urlQueue = new URL(urlQ);
                 String resultQ = downloadUrl(urlQueue);
-                String resQ1 = resultQ.replace("[", "");
-                String resQ = resQ1.replace("]", "");
-                Log.e("RESULTQ", "Esto es resultQ: " + resQ);
 
-                JSONObject jsonObjectQ = new JSONObject(resQ);
+                JSONArray jsonArray = new JSONArray(resultQ);
+                JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
 
-                //JSONArray jsonArray = jsonObjectQ.getJSONArray();
-                //JSONObject jsonOSum = jsonArray.getJSONObject(0);
+                tierSolo = jsonObjectQSolo.optString("tier");
+                rankSolo = jsonObjectQSolo.optString("rank");
 
-                Log.e("JSONQUEUE", jsonObjectQ.toString());
+                if(jsonArray.length() > 1){
 
-                tier = jsonObjectQ.optString("tier");
-                rank = jsonObjectQ.optString("rank");
+                    JSONObject jsonObjectQFlex = jsonArray.getJSONObject(1);
+
+                    tierFlex = jsonObjectQFlex.optString("tier");
+                    rankFlex = jsonObjectQFlex.optString("rank");
+
+                }else{
+
+                    tierFlex = "UNRANKED";
+                    rankFlex = "UNRANKED";
+
+                }
+
 
             } catch (MalformedURLException e) {
 
@@ -129,8 +137,10 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mBundle.putString("level", level);
             mBundle.putString("id", id);
             mBundle.putString("name", name);
-            mBundle.putString("tier", tier);
-            mBundle.putString("rank", rank);
+            mBundle.putString("tierSolo", tierSolo);
+            mBundle.putString("rankSolo", rankSolo);
+            mBundle.putString("tierFlex", tierFlex);
+            mBundle.putString("rankFlex", rankFlex);
             intent.putExtras(mBundle);
             startActivity(intent);
             finish();

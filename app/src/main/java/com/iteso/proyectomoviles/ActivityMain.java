@@ -53,8 +53,10 @@ public class ActivityMain extends AppCompatActivity {
         final String level = getIntent().getExtras().getString("level");
         final String id = getIntent().getExtras().getString("id");
         final String name = getIntent().getExtras().getString("name");
-        final String tier = getIntent().getExtras().getString("tier");
-        final String rank = getIntent().getExtras().getString("rank");
+        final String tierSolo = getIntent().getExtras().getString("tierSolo");
+        final String rankSolo = getIntent().getExtras().getString("rankSolo");
+        final String tierFlex = getIntent().getExtras().getString("tierFlex");
+        final String rankFlex = getIntent().getExtras().getString("rankFlex");
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -74,24 +76,20 @@ public class ActivityMain extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        //Intent intent = new Intent(ActivityMain.this, ActivityLolHome.class);
-                        //startActivity(intent);
 
                         FragmentManager manager = getSupportFragmentManager();
-
                         FragmentTransaction transaction = manager.beginTransaction();
-
                         FragmentLolHome fHome = new FragmentLolHome();
-
-                        Log.e("INSIDECASE", iconId);
 
                         Bundle summonerBundle = new Bundle();
                         summonerBundle.putString("IconId", iconId);
                         summonerBundle.putString("level", level);
                         summonerBundle.putString("id", id);
                         summonerBundle.putString("name", name);
-                        summonerBundle.putString("tier", tier);
-                        summonerBundle.putString("rank", rank);
+                        summonerBundle.putString("tierSolo", tierSolo);
+                        summonerBundle.putString("rankSolo", rankSolo);
+                        summonerBundle.putString("tierFlex", tierFlex);
+                        summonerBundle.putString("rankFlex", rankFlex);
                         fHome.setArguments(summonerBundle);
                         transaction.add(R.id.container, fHome);
                         transaction.replace(R.id.container, fHome);
@@ -143,8 +141,10 @@ public class ActivityMain extends AppCompatActivity {
             summonerBundle.putString("level", level);
             summonerBundle.putString("id", id);
             summonerBundle.putString("name", name);
-            summonerBundle.putString("tier", tier);
-            summonerBundle.putString("rank", rank);
+            summonerBundle.putString("tierSolo", tierSolo);
+            summonerBundle.putString("rankSolo", rankSolo);
+            summonerBundle.putString("tierFlex", tierFlex);
+            summonerBundle.putString("rankFlex", rankFlex);
             fHome.setArguments(summonerBundle);
             transaction.add(R.id.container, fHome);
             transaction.replace(R.id.container, fHome);
