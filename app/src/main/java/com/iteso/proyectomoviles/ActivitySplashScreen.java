@@ -96,15 +96,16 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
                 URL urlQueue = new URL(urlQ);
                 String resultQ = downloadUrl(urlQueue);
-                Log.e("RESULTQ", "Esto es resultQ: " + resultQ);
+                String resQ1 = resultQ.replace("[", "");
+                String resQ = resQ1.replace("]", "");
+                Log.e("RESULTQ", "Esto es resultQ: " + resQ);
 
+                JSONObject jsonObjectQ = new JSONObject(resQ);
 
-                JSONObject jsonObjectQ = new JSONObject(resultQ);
-                JSONArray jsonArray = jsonObjectQ.getJSONArray("");
+                //JSONArray jsonArray = jsonObjectQ.getJSONArray();
+                //JSONObject jsonOSum = jsonArray.getJSONObject(0);
 
-                JSONObject jsonOSum = jsonArray.getJSONObject(0);
-
-                Log.e("JSONQUEUE", jsonOSum.toString());
+                Log.e("JSONQUEUE", jsonObjectQ.toString());
 
                 tier = jsonObjectQ.optString("tier");
                 rank = jsonObjectQ.optString("rank");
