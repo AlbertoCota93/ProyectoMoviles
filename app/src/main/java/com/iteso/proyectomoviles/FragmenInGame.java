@@ -14,7 +14,7 @@ import com.iteso.proyectomoviles.beans.AdapterSummoner;
 import com.iteso.proyectomoviles.beans.Summoner;
 
 import java.util.ArrayList;
-
+import com.squareup.picasso.Picasso;
 
 public class FragmenInGame extends android.support.v4.app.Fragment {
 

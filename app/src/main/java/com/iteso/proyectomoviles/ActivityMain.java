@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +22,21 @@ import android.widget.ArrayAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -30,6 +48,13 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final String iconId = getIntent().getExtras().getString("IconId");
+        final String level = getIntent().getExtras().getString("level");
+        final String id = getIntent().getExtras().getString("id");
+        final String name = getIntent().getExtras().getString("name");
+        final String tier = getIntent().getExtras().getString("tier");
+        final String rank = getIntent().getExtras().getString("rank");
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -51,8 +76,27 @@ public class ActivityMain extends AppCompatActivity {
                     case R.id.nav_home:
                         //Intent intent = new Intent(ActivityMain.this, ActivityLolHome.class);
                         //startActivity(intent);
-                            getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                    new FragmentLolHome()).commit();
+
+                        FragmentManager manager = getSupportFragmentManager();
+
+                        FragmentTransaction transaction = manager.beginTransaction();
+
+                        FragmentLolHome fHome = new FragmentLolHome();
+
+                        Log.e("INSIDECASE", iconId);
+
+                        Bundle summonerBundle = new Bundle();
+                        summonerBundle.putString("IconId", iconId);
+                        summonerBundle.putString("level", level);
+                        summonerBundle.putString("id", id);
+                        summonerBundle.putString("name", name);
+                        summonerBundle.putString("tier", tier);
+                        summonerBundle.putString("rank", rank);
+                        fHome.setArguments(summonerBundle);
+                        transaction.add(R.id.container, fHome);
+                        transaction.replace(R.id.container, fHome);
+                        transaction.commit();
+
                         break;
                     case R.id.nav_pros:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
@@ -89,8 +133,23 @@ public class ActivityMain extends AppCompatActivity {
         toggle.syncState();
 
         if(savedInstanceState == null ) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,
-            new FragmentLolHome()).commit();
+
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            FragmentLolHome fHome = new FragmentLolHome();
+
+            Bundle summonerBundle = new Bundle();
+            summonerBundle.putString("IconId", iconId);
+            summonerBundle.putString("level", level);
+            summonerBundle.putString("id", id);
+            summonerBundle.putString("name", name);
+            summonerBundle.putString("tier", tier);
+            summonerBundle.putString("rank", rank);
+            fHome.setArguments(summonerBundle);
+            transaction.add(R.id.container, fHome);
+            transaction.replace(R.id.container, fHome);
+            transaction.commit();
+
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
@@ -103,5 +162,43 @@ public class ActivityMain extends AppCompatActivity {
             super.onBackPressed();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+        if (id == R.id.action_logout_pref) {
+            if (isLoggedIn) {
+                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
+
+                        Toast.LENGTH_SHORT);
+                notThisLogout.show();
+            } else {
+                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            }
+        } else if (id == R.id.action_logout_face) {
+            if (isLoggedIn) {
+                LoginManager.getInstance().logOut();
+                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out normal",
+
+                        Toast.LENGTH_SHORT);
+                notThisLogout.show();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

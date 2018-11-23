@@ -3,6 +3,22 @@ package com.iteso.proyectomoviles.beans;
 public class Summoner {
 
     String summoner, champion, spell1, spell2;
+    String summonerIcon, level, rank, id, tier;
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
@@ -11,7 +27,34 @@ public class Summoner {
                 ", champion='" + champion + '\'' +
                 ", spell1='" + spell1 + '\'' +
                 ", spell2='" + spell2 + '\'' +
+                ", summonerIcon='" + summonerIcon + '\'' +
+                ", level='" + level + '\'' +
+                ", rank='" + rank + '\'' +
                 '}';
+    }
+
+    public String getSummonerIcon() {
+        return summonerIcon;
+    }
+
+    public void setSummonerIcon(String summonerIcon) {
+        this.summonerIcon = summonerIcon;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     public String getSummoner() {

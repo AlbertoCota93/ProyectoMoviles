@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:orientation="vertical"
+    tools:context=".AccountSignin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".9">
+
+        <EditText
+            android:id="@+id/fragment_account_lol_user"
+            android:textSize="@dimen/activity_dota_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_profile"
+            android:textColorHint="@android:color/white"
+            android:hint=" Lol Account"
+            />
+        <Button
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
+            android:id="@+id/fragment_account_lol_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_account_lol_user"
+            android:layout_centerInParent="true"
+            android:background="@color/colorAccent"
+            android:text="Save LoL Account"
+            android:textColor="@android:color/white"/>
+        <EditText
+            android:id="@+id/fragment_account_dota_user"
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_account_lol_button"
+            android:layout_centerInParent="true"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_profile"
+            android:textColorHint="@android:color/white"
+            android:hint="DotA 2 Account"/>
+        <Button
+            android:layout_marginTop="@dimen/dota_matchHistory_margin_top"
+            android:id="@+id/fragment_account_dota_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_account_dota_user"
+            android:layout_centerInParent="true"
+            android:background="@color/colorAccent"
+            android:text="Save DotA Account"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+        <Button
+            android:id="@+id/fragment_account_toMain_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginBottom="@dimen/profile_margin_top"
+            android:background="@color/colorPrimary"
+            android:text="To Main"
+            android:textColor="@android:color/white"/>
+
+</LinearLayout>

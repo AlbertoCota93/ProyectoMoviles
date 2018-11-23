@@ -14,6 +14,16 @@
         android:layout_height="0dp"
         android:layout_weight=".8">
 
+        <ImageView
+            android:id="@+id/activity_login_lotalogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lotalogo"
+            android:layout_above="@+id/activity_log_in_email"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="50dp"
+            />
+
         <EditText
             android:id="@+id/activity_log_in_email"
             android:layout_width="200dp"
@@ -23,7 +33,8 @@
             android:drawableLeft="@drawable/ic_user"
             android:hint="Email"
             android:textColorHint="#FFFFFF"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="@color/colorWhite"/>
 
         <EditText
             android:id="@+id/activity_log_in_pass"
@@ -35,7 +46,18 @@
             android:drawableLeft="@drawable/ic_pass"
             android:hint="@string/log_in_password"
             android:textColorHint="#FFFFFF"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/colorWhite"
+            />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/activity_login_face_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/activity_log_in_pass"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/activity_login_logIn"
