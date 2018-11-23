@@ -30,7 +30,7 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_fragment_lol_home, container, false);
         summonerIcon = view.findViewById(R.id.activity_lol_home_perfil);
         summonerName = view.findViewById(R.id.activity_lol_home_text_summonerd);
-        summonerLevel = view.findViewById(R.id.activity_lol_home_text_main);
+        summonerLevel = view.findViewById(R.id.activity_lol_home_level);
         summonerTier = view.findViewById(R.id.activity_lol_home_rank_text);
 
         Summoner summoner = new Summoner();
@@ -53,7 +53,7 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         String urlIcon = "http://ddragon.leagueoflegends.com/cdn/8.23.1/img/profileicon/" + summoner.getSummonerIcon() + ".png";
         Picasso.with(getActivity().getApplicationContext()).load(urlIcon).fit().into(summonerIcon);
         summonerName.setText(summoner.getSummoner());
-        summonerLevel.setText(summoner.getLevel());
+        summonerLevel.setText("Level " + summoner.getLevel());
         summonerTier.setText(summoner.getTier() + " " + summoner.getRank());
 
         return view;

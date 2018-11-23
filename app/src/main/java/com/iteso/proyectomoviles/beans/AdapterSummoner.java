@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.iteso.proyectomoviles.R;
 
 import com.iteso.proyectomoviles.beans.Summoner;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.List;
@@ -64,10 +65,10 @@ public class AdapterSummoner extends RecyclerView.Adapter<AdapterSummoner.MyView
 
         myViewHolder.summonerName.setText(summoner.getSummoner());
 
-        new DownloadImageTask(myViewHolder.champion).execute(summoner.getChampion());
-        new DownloadImageTask(myViewHolder.spell1).execute(summoner.getSpell1());
-        new DownloadImageTask(myViewHolder.spell2).execute(summoner.getSpell2());
 
+        Picasso.with( myViewHolder.champion.getContext().getApplicationContext()).load(summoner.getChampion()).fit().into(myViewHolder.champion);
+        Picasso.with( myViewHolder.spell1.getContext().getApplicationContext()).load(summoner.getSpell1()).fit().into(myViewHolder.spell1);
+        Picasso.with( myViewHolder.spell2.getContext().getApplicationContext()).load(summoner.getSpell2()).fit().into(myViewHolder.spell2);
 
     }
 
@@ -78,29 +79,6 @@ public class AdapterSummoner extends RecyclerView.Adapter<AdapterSummoner.MyView
 
     }
 
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap bmp = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                bmp = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return bmp;
-        }
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 
 }
 
