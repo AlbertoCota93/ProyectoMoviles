@@ -3,12 +3,19 @@ package com.iteso.proyectomoviles.beans;
 public class Summoner {
 
     String summoner, champion, spell1, spell2;
-    String summonerIcon, level, rank, id;
+    String summonerIcon, level, rank, id, tier;
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
 
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }

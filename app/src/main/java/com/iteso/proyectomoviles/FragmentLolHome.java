@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 public class FragmentLolHome extends android.support.v4.app.Fragment {
 
     ImageView summonerIcon;
-    TextView summonerName;
+    TextView summonerName, summonerLevel, summonerTier;
 
     @Nullable
     @Override
@@ -30,6 +30,8 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_fragment_lol_home, container, false);
         summonerIcon = view.findViewById(R.id.activity_lol_home_perfil);
         summonerName = view.findViewById(R.id.activity_lol_home_text_summonerd);
+        summonerLevel = view.findViewById(R.id.activity_lol_home_text_main);
+        summonerTier = view.findViewById(R.id.activity_lol_home_rank_text);
 
         Summoner summoner = new Summoner();
 
@@ -45,10 +47,14 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         summoner.setSummoner(summonerBundle.getString("name"));
         summoner.setLevel(summonerBundle.getString("level"));
         summoner.setId(summonerBundle.getString("id"));
+        summoner.setRank(summonerBundle.getString("rank"));
+        summoner.setTier(summonerBundle.getString("tier"));
 
         String urlIcon = "http://ddragon.leagueoflegends.com/cdn/8.23.1/img/profileicon/" + summoner.getSummonerIcon() + ".png";
         Picasso.with(getActivity().getApplicationContext()).load(urlIcon).fit().into(summonerIcon);
         summonerName.setText(summoner.getSummoner());
+        summonerLevel.setText(summoner.getLevel());
+        summonerTier.setText(summoner.getTier() + " " + summoner.getRank());
 
         return view;
     }

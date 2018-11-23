@@ -38,6 +38,8 @@ public class ActivityMain extends AppCompatActivity {
         final String level = getIntent().getExtras().getString("level");
         final String id = getIntent().getExtras().getString("id");
         final String name = getIntent().getExtras().getString("name");
+        final String tier = getIntent().getExtras().getString("tier");
+        final String rank = getIntent().getExtras().getString("rank");
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,6 +75,8 @@ public class ActivityMain extends AppCompatActivity {
                         summonerBundle.putString("level", level);
                         summonerBundle.putString("id", id);
                         summonerBundle.putString("name", name);
+                        summonerBundle.putString("tier", tier);
+                        summonerBundle.putString("rank", rank);
                         fHome.setArguments(summonerBundle);
                         transaction.add(R.id.container, fHome);
                         transaction.replace(R.id.container, fHome);
@@ -124,6 +128,8 @@ public class ActivityMain extends AppCompatActivity {
             summonerBundle.putString("level", level);
             summonerBundle.putString("id", id);
             summonerBundle.putString("name", name);
+            summonerBundle.putString("tier", tier);
+            summonerBundle.putString("rank", rank);
             fHome.setArguments(summonerBundle);
             transaction.add(R.id.container, fHome);
             transaction.replace(R.id.container, fHome);

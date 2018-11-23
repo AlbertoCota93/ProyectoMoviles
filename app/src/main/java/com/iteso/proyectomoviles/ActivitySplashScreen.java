@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.iteso.proyectomoviles.Beans.User;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
-    String iconId, level, id, name;
+    String iconId, level, id, name, tier, rank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +75,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
 
-                Log.e("MyASYNCTASKMONIT", "Entro");
-
                 String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
                 String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
 
@@ -86,16 +85,29 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
                 Log.e("JSONOBJECTRES", jsonObject.toString());
 
-                Log.e("JSONOBJECTRES", jsonObject.optString("profileIconId"));
+                Log.e("RESULT", result);
 
                 iconId = jsonObject.optString("profileIconId");
                 level = jsonObject.optString("summonerLevel");
-                id = jsonObject.getString("id");
-                name = jsonObject.getString("name");
+                id = jsonObject.optString("id");
+                name = jsonObject.optString("name");
 
-                String urlIcon = "http://ddragon.leagueoflegends.com/cdn/8.23.1/img/profileicon/" + jsonObject.optString("profileIconId") + ".png";
-                Log.e("URLICON", urlIcon);
+                String urlQ = "https://la1.api.riotgames.com/lol/league/v3/positions/by-summoner/" + id + "?api_key=" + key;
 
+                URL urlQueue = new URL(urlQ);
+                String resultQ = downloadUrl(urlQueue);
+                Log.e("RESULTQ", "Esto es resultQ: " + resultQ);
+
+
+                JSONObject jsonObjectQ = new JSONObject(resultQ);
+                JSONArray jsonArray = jsonObjectQ.getJSONArray("");
+
+                JSONObject jsonOSum = jsonArray.getJSONObject(0);
+
+                Log.e("JSONQUEUE", jsonOSum.toString());
+
+                tier = jsonObjectQ.optString("tier");
+                rank = jsonObjectQ.optString("rank");
 
             } catch (MalformedURLException e) {
 
@@ -116,6 +128,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mBundle.putString("level", level);
             mBundle.putString("id", id);
             mBundle.putString("name", name);
+            mBundle.putString("tier", tier);
+            mBundle.putString("rank", rank);
             intent.putExtras(mBundle);
             startActivity(intent);
             finish();
