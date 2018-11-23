@@ -20,6 +20,21 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
 public class ActivityMain extends AppCompatActivity {
 
     private DrawerLayout drawer;
@@ -103,5 +118,43 @@ public class ActivityMain extends AppCompatActivity {
             super.onBackPressed();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+        if (id == R.id.action_logout_pref) {
+            if (isLoggedIn) {
+                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
+
+                        Toast.LENGTH_SHORT);
+                notThisLogout.show();
+            } else {
+                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            }
+        } else if (id == R.id.action_logout_face) {
+            if (isLoggedIn) {
+                LoginManager.getInstance().logOut();
+                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out normal",
+
+                        Toast.LENGTH_SHORT);
+                notThisLogout.show();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
