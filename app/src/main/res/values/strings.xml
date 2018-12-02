@@ -19,7 +19,7 @@
     <string name="activity_Dota_MatchHistory_id4">5060708090</string>
     <string name="activity_Dota_ProTeams_Title">DotA 2 Pro Teams</string>
     <string name="activity_Lol_ProTeams_Title">League of Legends Pro Teams</string>
-    <string name="activity_Lol_Home_honor5">Honor 5</string>
+    <string name="activity_Lol_Home_flexQueue">Flex Queue</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

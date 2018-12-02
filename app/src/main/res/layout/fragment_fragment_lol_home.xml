@@ -45,19 +45,6 @@
                 android:layout_marginLeft="@dimen/profile_margin_left"
                 />
 
-            <RadioButton
-                android:id="@+id/activity_lol_home_ranked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Duo"
-                android:buttonTint="@color/colorWhite"
-                android:textSize="20dp"
-                android:textColor="@color/colorWhite"
-                android:layout_toRightOf="@id/activity_lol_home_text_summonerd"
-                android:layout_below="@+id/activity_lol_home_summoner"
-                android:layout_marginTop="@dimen/profile_margin_top"
-                android:layout_marginLeft="@dimen/profile_margin_left"
-                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -99,21 +86,21 @@
                 android:textColor="#FFFF" />
 
             <ImageView
-                android:id="@+id/activity_lol_home_honor_image"
+                android:id="@+id/activity_lol_home_flex_queue"
                 android:layout_width="@dimen/profile_width"
                 android:layout_height="@dimen/profile_height"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/honor_level_5" />
+                />
 
             <TextView
                 android:id="@+id/activity_lol_home_honor_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/activity_lol_home_honor_image"
+                android:layout_below="@+id/activity_lol_home_flex_queue"
                 android:layout_marginStart="30dp"
-                android:text="@string/activity_Lol_Home_honor5"
+                android:text="@string/activity_Lol_Home_flexQueue"
                 android:textColor="#FFFF"
                 android:textStyle="bold"
                 android:textSize="20dp" />
@@ -124,7 +111,7 @@
                 android:layout_height="@dimen/profile_height"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/platino" />
+                 />
 
             <TextView
                 android:id="@+id/activity_lol_home_rank_text"
@@ -133,9 +120,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/activity_lol_home_rank"
                 android:layout_marginEnd="13dp"
-                android:text="Platino 4"
+                android:text="Solo Queue"
                 android:textColor="#FFFF"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
