@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.iteso.proyectomoviles.Beans.User;
+import com.iteso.proyectomoviles.Beans.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,7 +76,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
 
-                String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
+                String key = Utils.RIOT_KEY;
                 String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
 
                 URL url = new URL(urlProfile);

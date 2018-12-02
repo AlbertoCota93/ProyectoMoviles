@@ -108,7 +108,7 @@ public class ActivityMain extends AppCompatActivity {
                         break;
                     case R.id.nav_in_game:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                new FragmenInGame()).commit();
+                                new FragmentSplashScreenInGame()).commit();
                         break;
                     case R.id.nav_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
