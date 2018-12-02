@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentLolHome"
+    android:background="@drawable/lol_background_selector"
     android:id="@+id/fragment_lol_home">
 
     <LinearLayout
@@ -38,6 +39,7 @@
                 android:id="@+id/activity_lol_home_summoner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
                 android:layout_toRightOf="@+id/activity_lol_home_text_summonerd"
                 android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
                 android:layout_marginLeft="@dimen/profile_margin_left"
@@ -48,7 +50,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Duo"
+                android:buttonTint="@color/colorWhite"
                 android:textSize="20dp"
+                android:textColor="@color/colorWhite"
                 android:layout_toRightOf="@id/activity_lol_home_text_summonerd"
                 android:layout_below="@+id/activity_lol_home_summoner"
                 android:layout_marginTop="@dimen/profile_margin_top"
@@ -60,12 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/activity_lol_home_background"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/background" />
+
 
             <ImageView
                 android:id="@+id/activity_lol_home_main"
