@@ -114,6 +114,7 @@ public class ActivityMain extends AppCompatActivity {
                     case R.id.nav_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new FragmentLolHistory()).commit();
+                        break;
                     case R.id.nav_dota_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new DotaMatchHistory()).commit();
