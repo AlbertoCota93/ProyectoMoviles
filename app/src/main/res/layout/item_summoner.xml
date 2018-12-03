@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/item_summoners_name"
         android:textSize="16dp"
+        android:textColor="@color/colorWhite"
         android:layout_below="@id/item_champion" />
 
     <LinearLayout

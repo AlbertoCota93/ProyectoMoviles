@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/dota_background_selector"
     tools:context=".DotaMatchHistory">
 
     <RelativeLayout
@@ -16,6 +17,8 @@
             android:id="@+id/fragment_dota_matchHistory_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="sans-serif-condensed"
             android:layout_marginLeft="@dimen/profile_margin_left"
             android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
             android:text="@string/activity_Dota_MatchHistory"
@@ -27,13 +30,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_dota">
-
-        <ImageView
-            android:id="@+id/activity_lol_home_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/background" />
 
         <ListView
             android:id="@+id/fragment_dota_matchHistory_list"

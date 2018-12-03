@@ -1,4 +1,4 @@
-package com.iteso.proyectomoviles.Beans;
+package com.iteso.proyectomoviles.beans;
 
 import android.os.Parcel;
 import android.os.Parcelable;

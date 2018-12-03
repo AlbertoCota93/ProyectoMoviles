@@ -1,15 +1,19 @@
 package com.iteso.proyectomoviles;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.iteso.proyectomoviles.Beans.User;
+import com.facebook.AccessToken;
+import com.iteso.proyectomoviles.beans.User;
+import com.iteso.proyectomoviles.beans.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,17 +33,36 @@ import javax.net.ssl.HttpsURLConnection;
 public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
-    String iconId, level, id, name, tier, rank;
+
+    String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex, championId, championLevel;
+    Boolean islogin = false;
+    JSONArray matchParticipants, matches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        if(!isNetworkAvailable()) {
+            Toast toast = Toast.makeText(ActivitySplashScreen.this,
+                    "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);
+            toast.show();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    finishAndRemoveTask();
+                    System.exit(0);
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task,4000);
+        }
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 User user = loadPreferences();
+                islogin =  user.isLogged();
                 if(user.isLogged()) {
                     new MyAsyncTask().execute();
                 } else {
@@ -69,46 +92,144 @@ public class ActivitySplashScreen extends AppCompatActivity {
         return user;
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
 
-                String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
-                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
+                String key = Utils.RIOT_KEY;
+                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ "Reius" + "?api_key=" + key;
 
                 URL url = new URL(urlProfile);
                 String result = downloadUrl(url);
 
                 JSONObject jsonObject = new JSONObject(result);
 
-                Log.e("JSONOBJECTRES", jsonObject.toString());
-
-                Log.e("RESULT", result);
-
                 iconId = jsonObject.optString("profileIconId");
                 level = jsonObject.optString("summonerLevel");
                 id = jsonObject.optString("id");
                 name = jsonObject.optString("name");
+                String accountId = jsonObject.optString("accountId");
 
-                String urlQ = "https://la1.api.riotgames.com/lol/league/v3/positions/by-summoner/" + id + "?api_key=" + key;
+                String urlQ = "https://la1.api.riotgames.com/lol/league/v4/positions/by-summoner/" + id + "?api_key=" + key;
 
                 URL urlQueue = new URL(urlQ);
                 String resultQ = downloadUrl(urlQueue);
-                String resQ1 = resultQ.replace("[", "");
-                String resQ = resQ1.replace("]", "");
-                Log.e("RESULTQ", "Esto es resultQ: " + resQ);
 
-                JSONObject jsonObjectQ = new JSONObject(resQ);
+                JSONArray jsonArray = new JSONArray(resultQ);
 
-                //JSONArray jsonArray = jsonObjectQ.getJSONArray();
-                //JSONObject jsonOSum = jsonArray.getJSONObject(0);
+                Log.e("RANKS", resultQ);
 
-                Log.e("JSONQUEUE", jsonObjectQ.toString());
+                if(jsonArray.length() == 0){
 
-                tier = jsonObjectQ.optString("tier");
-                rank = jsonObjectQ.optString("rank");
+                    tierSolo = "UNRANKED";
+                    rankSolo = "UNRANKED";
+
+                    tierFlex = "UNRANKED";
+                    rankFlex = "UNRANKED";
+
+                }else if (jsonArray.length() == 1){
+
+                    JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
+
+                    Log.e("RANKS", jsonObjectQSolo.toString());
+
+                    tierSolo = jsonObjectQSolo.optString("tier");
+                    rankSolo = jsonObjectQSolo.optString("rank");
+
+                    tierFlex = "UNRANKED";
+                    rankFlex = "UNRANKED";
+
+                }else if(jsonArray.length() > 1){
+
+                    JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
+
+                    tierSolo = jsonObjectQSolo.optString("tier");
+                    rankSolo = jsonObjectQSolo.optString("rank");
+
+                    JSONObject jsonObjectQFlex = jsonArray.getJSONObject(1);
+
+                    tierFlex = jsonObjectQFlex.optString("tier");
+                    rankFlex = jsonObjectQFlex.optString("rank");
+
+                }
+
+                String urlM = "https://la1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + key;
+
+                URL urlMasteries = new URL(urlM);
+                String resultM = downloadUrl(urlMasteries);
+
+                JSONArray jsonArrayMasteries = new JSONArray(resultM);
+                JSONObject jsonObjectMastrie = jsonArrayMasteries.getJSONObject(0);
+
+                championId = jsonObjectMastrie.optString("championId");
+                championLevel = jsonObjectMastrie.optString("championLevel");
+
+                String urlMatches = "https://la1.api.riotgames.com/lol/match/v4/matchlists/by-account/"+ accountId +"?endIndex=20&api_key=" + key;
+
+                Log.e("Matches", urlMatches);
+
+                URL urlgetMatches = new URL(urlMatches);
+                String resultMatches = downloadUrl(urlgetMatches);
+
+                Log.e("Matches", resultMatches);
+
+                JSONObject jsonObjectMatches = new JSONObject(resultMatches);
+                JSONArray jsonArrayMatches = jsonObjectMatches.getJSONArray("matches");
+
+                Log.e("Matches", jsonArrayMatches.toString());
+
+                matchParticipants = new JSONArray();
+
+                matches = jsonArrayMatches;
+
+
+                for(int i = 0; i < jsonArrayMatches.length(); i++){
+
+                    JSONObject temp = jsonArrayMatches.getJSONObject(i);
+                    String urlMatch = "https://la1.api.riotgames.com/lol/match/v4/matches/"+ temp.optString("gameId")+"?api_key=" + key;
+
+                    URL urlGetMatch = new URL(urlMatch);
+                    String tempResult = downloadUrl(urlGetMatch);
+
+                    //Log.e("Matches", tempResult);
+
+                    JSONObject jsonObjectParticipantId = new JSONObject(tempResult);
+                    JSONArray jsonArrayParticipants = jsonObjectParticipantId.getJSONArray("participantIdentities");
+
+                    String playerId = "";
+
+                    for(int j = 0; j < jsonArrayParticipants.length(); j++){
+
+                        JSONObject tempP = jsonArrayParticipants.getJSONObject(j);
+                        JSONObject player = tempP.getJSONObject("player");
+
+
+                        if(player.optString("summonerId").equals(id))
+                            playerId = tempP.optString("participantId");
+
+                    }
+
+                    JSONArray participants = jsonObjectParticipantId.getJSONArray("participants");
+
+                    for(int k = 0; k < participants.length(); k++){
+
+                        JSONObject currentParticipant = participants.getJSONObject(k);
+
+                        if(currentParticipant.optString("participantId").equals(playerId))
+                            matchParticipants.put(currentParticipant);
+
+                    }
+
+                }
 
             } catch (MalformedURLException e) {
 
@@ -122,15 +243,27 @@ public class ActivitySplashScreen extends AppCompatActivity {
         }
 
         protected void onPostExecute(Void aVoid) {
-
-            Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            Intent intent;
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+            if(!(islogin || isLoggedIn)) {
+                intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
+            } else {
+                intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            }
             Bundle mBundle = new Bundle();
             mBundle.putString("IconId", iconId);
             mBundle.putString("level", level);
             mBundle.putString("id", id);
             mBundle.putString("name", name);
-            mBundle.putString("tier", tier);
-            mBundle.putString("rank", rank);
+            mBundle.putString("tierSolo", tierSolo);
+            mBundle.putString("rankSolo", rankSolo);
+            mBundle.putString("tierFlex", tierFlex);
+            mBundle.putString("rankFlex", rankFlex);
+            mBundle.putString("championId", championId);
+            mBundle.putString("championLevel", championLevel);
+            mBundle.putString("matchParticipants", matchParticipants.toString());
+            mBundle.putString("matches", matches.toString());
             intent.putExtras(mBundle);
             startActivity(intent);
             finish();

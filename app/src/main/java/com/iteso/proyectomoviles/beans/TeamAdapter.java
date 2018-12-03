@@ -51,6 +51,14 @@ public class TeamAdapter extends BaseAdapter {
         teamRegion.setText(team.getRegion());
 
         Drawable drawable = context.getResources().getDrawable(R.drawable.liquidlogo);
+        Drawable drawable1 = context.getResources().getDrawable(R.drawable.h2klogo);
+        Drawable drawable2= context.getResources().getDrawable(R.drawable.s04logo);
+        Drawable drawable3 = context.getResources().getDrawable(R.drawable.uniconrslogo);
+        Drawable drawable4 = context.getResources().getDrawable(R.drawable.vitalitylogo);
+        teamIcon.setImageDrawable(drawable1);
+        teamIcon.setImageDrawable(drawable2);
+        teamIcon.setImageDrawable(drawable3);
+        teamIcon.setImageDrawable(drawable4);
         teamIcon.setImageDrawable(drawable);
         return teamView;
     }

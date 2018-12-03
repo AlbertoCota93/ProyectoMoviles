@@ -1,17 +1,14 @@
 package com.iteso.proyectomoviles;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.iteso.proyectomoviles.beans.TeamAdapter;
 import com.iteso.proyectomoviles.beans.TeamList;
+import com.iteso.proyectomoviles.beans.TeamAdapter;
 
 
 public class FragmentLolTeams extends android.support.v4.app.Fragment {
@@ -24,7 +21,7 @@ public class FragmentLolTeams extends android.support.v4.app.Fragment {
         ListView listView = (ListView)view.findViewById(R.id.fragment_lol_proTeams_list);
 
 
-        final TeamList teamList = new TeamList();
+        final TeamList teamList = new TeamList(1);
         TeamAdapter teamAdapter = new TeamAdapter(getActivity(),teamList);
         listView.setAdapter(teamAdapter);
         return view;

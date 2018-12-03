@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentSplashScreenInGame"
+    android:background="@color/com_facebook_blue">
+
+        <TextView
+            android:id="@+id/fragment_splash_screen_ingame_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loading"
+            android:textSize="50dp"
+            android:textColor="@color/colorWhite"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            />
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/frag_splash_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_splash_screen_ingame_textview"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            />
+
+</RelativeLayout>
