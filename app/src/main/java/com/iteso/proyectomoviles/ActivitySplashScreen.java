@@ -1,13 +1,17 @@
 package com.iteso.proyectomoviles;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.iteso.proyectomoviles.Beans.User;
@@ -38,7 +42,20 @@ public class ActivitySplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        if(isNetworkAvailable()) {
+            Toast toast = Toast.makeText(ActivitySplashScreen.this,
+                    "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);
+            toast.show();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                  finishAndRemoveTask();
+                  System.exit(0);
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task,4000);
+        }
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -71,6 +88,13 @@ public class ActivitySplashScreen extends AppCompatActivity {
         user.setPassword(sharedPreferences.getString("PWD", "1234"));
         user.setLogged(sharedPreferences.getBoolean("LOGGER", false));
         return user;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     class MyAsyncTask extends AsyncTask<Void, Void, Void> {
