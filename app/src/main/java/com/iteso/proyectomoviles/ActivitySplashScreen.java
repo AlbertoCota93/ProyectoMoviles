@@ -76,7 +76,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
             try {
 
                 String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
-                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
+                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ "Reius" + "?api_key=" + key;
 
                 URL url = new URL(urlProfile);
                 String result = downloadUrl(url);
@@ -92,7 +92,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 id = jsonObject.optString("id");
                 name = jsonObject.optString("name");
 
-                String urlQ = "https://la1.api.riotgames.com/lol/league/v3/positions/by-summoner/" + id + "?api_key=" + key;
+                String urlQ = "https://la1.api.riotgames.com/lol/league/v4/positions/by-summoner/" + id + "?api_key=" + key;
 
                 URL urlQueue = new URL(urlQ);
                 String resultQ = downloadUrl(urlQueue);
