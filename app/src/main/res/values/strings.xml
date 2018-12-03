@@ -34,7 +34,7 @@
     <string name="facebook_app_id">2256431181265034</string>
     <string name="fb_login_protocol_scheme">fb2256431181265034</string>
     <string name="menu_activity_main_logout_pref">Log out</string>
-    <string name="menu_activity_main_logout_face">Log out Facebook</string>
+    <string name="menu_activity_main_add_account">Add account</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

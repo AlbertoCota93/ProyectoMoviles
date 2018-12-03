@@ -2,6 +2,7 @@ package com.iteso.proyectomoviles;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -174,6 +175,7 @@ public class ActivityMain extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        Intent intent;
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
         if (id == R.id.action_logout_pref) {
             if (isLoggedIn) {
@@ -182,14 +184,14 @@ public class ActivityMain extends AppCompatActivity {
                         Toast.LENGTH_SHORT);
                 notThisLogout.show();*/
                 LoginManager.getInstance().logOut();
-                Intent intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Intent intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
-                startActivity(intent);
-                finish();
             }
+            intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
+            SharedPreferences sharedPreferences = getSharedPreferences(
+                    ActivitySplashScreen.MYPREFERENCES, MODE_PRIVATE);
+            if(sharedPreferences.contains("EMAIL"))
+                sharedPreferences.edit().clear().commit();
+            startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

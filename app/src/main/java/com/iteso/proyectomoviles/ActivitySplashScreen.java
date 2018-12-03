@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.facebook.AccessToken;
 import com.iteso.proyectomoviles.Beans.User;
 import com.iteso.proyectomoviles.Beans.Utils;
 
@@ -31,6 +32,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
     String iconId, level, id, name, tier, rank;
+    Boolean islogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 User user = loadPreferences();
+                islogin =  user.isLogged();
                 if(user.isLogged()) {
                     new MyAsyncTask().execute();
                 } else {
@@ -123,8 +126,14 @@ public class ActivitySplashScreen extends AppCompatActivity {
         }
 
         protected void onPostExecute(Void aVoid) {
-
-            Intent intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
+            Intent intent;
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+            if(!(islogin || isLoggedIn)) {
+                intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
+            } else {
+                intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            }
             Bundle mBundle = new Bundle();
             mBundle.putString("IconId", iconId);
             mBundle.putString("level", level);
