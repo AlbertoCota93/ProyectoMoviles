@@ -2,6 +2,7 @@ package com.iteso.proyectomoviles;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -106,11 +107,12 @@ public class ActivityMain extends AppCompatActivity {
                         break;
                     case R.id.nav_in_game:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                new FragmenInGame()).commit();
+                                new FragmentSplashScreenInGame()).commit();
                         break;
                     case R.id.nav_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new FragmentLolHistory()).commit();
+                        break;
                     case R.id.nav_dota_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                                 new DotaMatchHistory()).commit();
@@ -174,30 +176,23 @@ public class ActivityMain extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        Intent intent;
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
         if (id == R.id.action_logout_pref) {
             if (isLoggedIn) {
-                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
+                /*Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
 
                         Toast.LENGTH_SHORT);
-                notThisLogout.show();
-            } else {
-                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
-                startActivity(intent);
-                finish();
-            }
-        } else if (id == R.id.action_logout_face) {
-            if (isLoggedIn) {
+                notThisLogout.show();*/
                 LoginManager.getInstance().logOut();
-                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out normal",
-
-                        Toast.LENGTH_SHORT);
-                notThisLogout.show();
             }
+            intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
+            SharedPreferences sharedPreferences = getSharedPreferences(
+                    ActivitySplashScreen.MYPREFERENCES, MODE_PRIVATE);
+            if(sharedPreferences.contains("EMAIL"))
+                sharedPreferences.edit().clear().commit();
+            startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

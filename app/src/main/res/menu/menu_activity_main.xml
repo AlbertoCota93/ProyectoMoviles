@@ -10,9 +10,9 @@
         android:title="@string/menu_activity_main_logout_pref"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_logout_face"
+        android:id="@+id/action_add_account"
         android:orderInCategory="200"
-        android:title="@string/menu_activity_main_logout_face"
+        android:title="@string/menu_activity_main_add_account"
         app:showAsAction="never"
         />
 </menu>

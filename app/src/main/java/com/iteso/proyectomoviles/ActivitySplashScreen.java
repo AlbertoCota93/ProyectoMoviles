@@ -1,15 +1,21 @@
 package com.iteso.proyectomoviles;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.iteso.proyectomoviles.Beans.User;
+import com.iteso.proyectomoviles.Beans.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,17 +35,33 @@ import javax.net.ssl.HttpsURLConnection;
 public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
+
     String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex;
+    Boolean islogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        if(isNetworkAvailable()) {
+            Toast toast = Toast.makeText(ActivitySplashScreen.this,
+                    "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);
+            toast.show();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                  finishAndRemoveTask();
+                  System.exit(0);
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task,4000);
+        }
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 User user = loadPreferences();
+                islogin =  user.isLogged();
                 if(user.isLogged()) {
                     new MyAsyncTask().execute();
                 } else {
@@ -69,15 +91,22 @@ public class ActivitySplashScreen extends AppCompatActivity {
         return user;
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     class MyAsyncTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
 
-                String key = "RGAPI-de4cf057-13a9-4d72-88bb-a27ad3349228";
-                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ "Reius" + "?api_key=" + key;
-
+                String key = Utils.RIOT_KEY;
+                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
+                
                 URL url = new URL(urlProfile);
                 String result = downloadUrl(url);
 
@@ -130,8 +159,14 @@ public class ActivitySplashScreen extends AppCompatActivity {
         }
 
         protected void onPostExecute(Void aVoid) {
-
-            Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            Intent intent;
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+            if(!(islogin || isLoggedIn)) {
+                intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
+            } else {
+                intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            }
             Bundle mBundle = new Bundle();
             mBundle.putString("IconId", iconId);
             mBundle.putString("level", level);

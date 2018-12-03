@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/dota_background_selector"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DotaHome">
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_Dota_Profile"
+            android:textColor="@color/colorWhite"
             android:layout_toRightOf="@+id/activity_dota_home_perfil"
             android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
             android:layout_marginLeft="@dimen/profile_margin_left"
@@ -38,13 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_dota">
-
-        <ImageView
-            android:id="@+id/activity_lol_home_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/background" />
 
         <TextView
             android:id="@+id/activity_dota_home_level"

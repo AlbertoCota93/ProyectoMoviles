@@ -80,6 +80,8 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
             }
         });
 
+
+
         return view;
     }
 

@@ -19,7 +19,7 @@
     <string name="activity_Dota_MatchHistory_id4">5060708090</string>
     <string name="activity_Dota_ProTeams_Title">DotA 2 Pro Teams</string>
     <string name="activity_Lol_ProTeams_Title">League of Legends Pro Teams</string>
-    <string name="activity_Lol_Home_honor5">Honor 5</string>
+    <string name="activity_Lol_Home_flexQueue">Flex Queue</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -34,7 +34,7 @@
     <string name="facebook_app_id">2256431181265034</string>
     <string name="fb_login_protocol_scheme">fb2256431181265034</string>
     <string name="menu_activity_main_logout_pref">Log out</string>
-    <string name="menu_activity_main_logout_face">Log out Facebook</string>
+    <string name="menu_activity_main_add_account">Add account</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
