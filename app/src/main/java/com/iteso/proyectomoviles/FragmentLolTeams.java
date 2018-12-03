@@ -24,7 +24,7 @@ public class FragmentLolTeams extends android.support.v4.app.Fragment {
         ListView listView = (ListView)view.findViewById(R.id.fragment_lol_proTeams_list);
 
 
-        final TeamList teamList = new TeamList();
+        final TeamList teamList = new TeamList(1);
         TeamAdapter teamAdapter = new TeamAdapter(getActivity(),teamList);
         listView.setAdapter(teamAdapter);
         return view;
