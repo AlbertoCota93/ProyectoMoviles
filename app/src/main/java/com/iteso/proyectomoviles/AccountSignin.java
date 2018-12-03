@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountSignin extends Fragment {
+public class AccountSignin extends android.support.v4.app.Fragment {
 
 
     public AccountSignin() {

@@ -215,6 +215,13 @@ public class ActivityMain extends AppCompatActivity {
                 sharedPreferences.edit().clear().commit();
             startActivity(intent);
             finish();
+        } else if(id == R.id.action_add_account) {
+            //getSupportFragmentManager().addToBackStack();
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.addToBackStack(null);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                                new AccountSignin()).commit();
         }
         return super.onOptionsItemSelected(item);
     }
