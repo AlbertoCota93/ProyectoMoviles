@@ -6,16 +6,14 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
-import com.iteso.proyectomoviles.Beans.User;
-import com.iteso.proyectomoviles.Beans.Utils;
+import com.iteso.proyectomoviles.beans.User;
+import com.iteso.proyectomoviles.beans.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
