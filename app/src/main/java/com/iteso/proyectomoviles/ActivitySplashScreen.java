@@ -36,27 +36,29 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
 
-    String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex;
+    String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex, championId, championLevel;
     Boolean islogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        if(isNetworkAvailable()) {
+
+        if(!isNetworkAvailable()) {
             Toast toast = Toast.makeText(ActivitySplashScreen.this,
                     "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);
             toast.show();
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                  finishAndRemoveTask();
-                  System.exit(0);
+                    finishAndRemoveTask();
+                    System.exit(0);
                 }
             };
             Timer timer = new Timer();
             timer.schedule(task,4000);
         }
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -105,16 +107,12 @@ public class ActivitySplashScreen extends AppCompatActivity {
             try {
 
                 String key = Utils.RIOT_KEY;
-                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
-                
+                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ "Reius" + "?api_key=" + key;
+
                 URL url = new URL(urlProfile);
                 String result = downloadUrl(url);
 
                 JSONObject jsonObject = new JSONObject(result);
-
-                Log.e("JSONOBJECTRES", jsonObject.toString());
-
-                Log.e("RESULT", result);
 
                 iconId = jsonObject.optString("profileIconId");
                 level = jsonObject.optString("summonerLevel");
@@ -127,24 +125,59 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 String resultQ = downloadUrl(urlQueue);
 
                 JSONArray jsonArray = new JSONArray(resultQ);
-                JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
 
-                tierSolo = jsonObjectQSolo.optString("tier");
-                rankSolo = jsonObjectQSolo.optString("rank");
+                Log.e("RANKS", resultQ);
 
-                if(jsonArray.length() > 1){
+                if(jsonArray.length() == 0){
+
+                    tierSolo = "UNRANKED";
+                    rankSolo = "UNRANKED";
+
+                    tierFlex = "UNRANKED";
+                    rankFlex = "UNRANKED";
+
+                }else if (jsonArray.length() == 1){
+
+                    JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
+
+                    Log.e("RANKS", jsonObjectQSolo.toString());
+
+                    tierSolo = jsonObjectQSolo.optString("tier");
+                    rankSolo = jsonObjectQSolo.optString("rank");
+
+                    tierFlex = "UNRANKED";
+                    rankFlex = "UNRANKED";
+
+                }else if(jsonArray.length() > 1){
+
+                    JSONObject jsonObjectQSolo = jsonArray.getJSONObject(0);
+
+                    tierSolo = jsonObjectQSolo.optString("tier");
+                    rankSolo = jsonObjectQSolo.optString("rank");
 
                     JSONObject jsonObjectQFlex = jsonArray.getJSONObject(1);
 
                     tierFlex = jsonObjectQFlex.optString("tier");
                     rankFlex = jsonObjectQFlex.optString("rank");
 
-                }else{
-
-                    tierFlex = "UNRANKED";
-                    rankFlex = "UNRANKED";
-
                 }
+
+                String urlM = "https://la1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + key;
+
+                URL urlMasteries = new URL(urlM);
+                String resultM = downloadUrl(urlMasteries);
+
+                Log.e("Champions", resultM);
+
+                JSONArray jsonArrayMasteries = new JSONArray(resultM);
+                JSONObject jsonObjectMastrie = jsonArrayMasteries.getJSONObject(0);
+
+                championId = jsonObjectMastrie.optString("championId");
+                championLevel = jsonObjectMastrie.optString("championLevel");
+
+                Log.e("Champions", championLevel);
+
+                Log.e("Champions", championId);
 
 
             } catch (MalformedURLException e) {
@@ -176,6 +209,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mBundle.putString("rankSolo", rankSolo);
             mBundle.putString("tierFlex", tierFlex);
             mBundle.putString("rankFlex", rankFlex);
+            mBundle.putString("championId", championId);
+            mBundle.putString("championLevel", championLevel);
             intent.putExtras(mBundle);
             startActivity(intent);
             finish();

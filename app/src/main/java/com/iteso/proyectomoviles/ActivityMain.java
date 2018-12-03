@@ -58,6 +58,10 @@ public class ActivityMain extends AppCompatActivity {
         final String rankSolo = getIntent().getExtras().getString("rankSolo");
         final String tierFlex = getIntent().getExtras().getString("tierFlex");
         final String rankFlex = getIntent().getExtras().getString("rankFlex");
+        final String championId = getIntent().getExtras().getString("championId");
+        final String championLevel = getIntent().getExtras().getString("championLevel");
+
+        Log.e("champions", championLevel);
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -91,6 +95,8 @@ public class ActivityMain extends AppCompatActivity {
                         summonerBundle.putString("rankSolo", rankSolo);
                         summonerBundle.putString("tierFlex", tierFlex);
                         summonerBundle.putString("rankFlex", rankFlex);
+                        summonerBundle.putString("championId", championId);
+                        summonerBundle.putString("championLevel", championLevel);
                         fHome.setArguments(summonerBundle);
                         transaction.add(R.id.container, fHome);
                         transaction.replace(R.id.container, fHome);
@@ -147,6 +153,8 @@ public class ActivityMain extends AppCompatActivity {
             summonerBundle.putString("rankSolo", rankSolo);
             summonerBundle.putString("tierFlex", tierFlex);
             summonerBundle.putString("rankFlex", rankFlex);
+            summonerBundle.putString("championId", championId);
+            summonerBundle.putString("championLevel", championLevel);
             fHome.setArguments(summonerBundle);
             transaction.add(R.id.container, fHome);
             transaction.replace(R.id.container, fHome);
