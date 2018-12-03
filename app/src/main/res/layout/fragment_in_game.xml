@@ -21,6 +21,10 @@
             android:orientation="horizontal"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/fragment_inGame_recycler_red"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No games Available"/>
 
         <android.support.v7.widget.RecyclerView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
