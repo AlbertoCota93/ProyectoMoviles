@@ -56,6 +56,8 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         summonerLevel.setText("Level " + summoner.getLevel());
         summonerTier.setText(summoner.getTier() + " " + summoner.getRank());
 
+
+
         return view;
     }
 

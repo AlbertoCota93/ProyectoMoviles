@@ -177,26 +177,18 @@ public class ActivityMain extends AppCompatActivity {
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
         if (id == R.id.action_logout_pref) {
             if (isLoggedIn) {
-                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
+                /*Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out de Facebook",
 
                         Toast.LENGTH_SHORT);
-                notThisLogout.show();
-            } else {
-                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
-                startActivity(intent);
-                finish();
-            }
-        } else if (id == R.id.action_logout_face) {
-            if (isLoggedIn) {
+                notThisLogout.show();*/
                 LoginManager.getInstance().logOut();
-                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                Intent intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
                 startActivity(intent);
                 finish();
             } else {
-                Toast notThisLogout = Toast.makeText(ActivityMain.this, "Usa el Log out normal",
-
-                        Toast.LENGTH_SHORT);
-                notThisLogout.show();
+                Intent intent = new Intent(ActivityMain.this, ActivitySplashScreen.class);
+                startActivity(intent);
+                finish();
             }
         }
         return super.onOptionsItemSelected(item);

@@ -124,7 +124,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
         protected void onPostExecute(Void aVoid) {
 
-            Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+            Intent intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
             Bundle mBundle = new Bundle();
             mBundle.putString("IconId", iconId);
             mBundle.putString("level", level);

@@ -58,7 +58,9 @@ public class ActivityLogin extends AppCompatActivity {
                     warning.show();
                 } else {
                     saveSharedPreferences();
+                    Bundle bundle = getIntent().getExtras();
                     Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                 }
@@ -69,8 +71,11 @@ public class ActivityLogin extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                Bundle bundle = getIntent().getExtras();
                 Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
             }
 
             @Override
