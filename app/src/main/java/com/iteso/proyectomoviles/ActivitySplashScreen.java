@@ -42,6 +42,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
         if(isNetworkAvailable()) {
             Toast toast = Toast.makeText(ActivitySplashScreen.this,
                     "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);

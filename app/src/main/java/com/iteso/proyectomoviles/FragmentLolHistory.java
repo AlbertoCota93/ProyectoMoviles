@@ -1,19 +1,15 @@
 package com.iteso.proyectomoviles;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.iteso.proyectomoviles.beans.MatchAdapter;
-import com.iteso.proyectomoviles.beans.MatchList;
+import com.iteso.proyectomoviles.Beans.MatchAdapter;
+import com.iteso.proyectomoviles.Beans.MatchList;
 
 public class FragmentLolHistory extends android.support.v4.app.Fragment {
     @Nullable

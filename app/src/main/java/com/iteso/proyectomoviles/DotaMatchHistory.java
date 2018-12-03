@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.iteso.proyectomoviles.beans.MatchAdapter;
-import com.iteso.proyectomoviles.beans.MatchList;
-
-import java.util.List;
+import com.iteso.proyectomoviles.Beans.MatchAdapter;
+import com.iteso.proyectomoviles.Beans.MatchList;
 
 
 /**

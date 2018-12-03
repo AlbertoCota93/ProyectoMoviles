@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.iteso.proyectomoviles.beans.TeamAdapter;
-import com.iteso.proyectomoviles.beans.TeamList;
+import com.iteso.proyectomoviles.Beans.TeamAdapter;
+import com.iteso.proyectomoviles.Beans.TeamList;
 
 
 /**

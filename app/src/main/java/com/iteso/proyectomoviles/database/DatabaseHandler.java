@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "ItesoStore.db";
+    private static final String DATABASE_NAME = "Lota.db";
     private static final int DATABASE_VERSION = 1;
 
     private static DatabaseHandler dataBaseHandler;

@@ -1,10 +1,6 @@
 package com.iteso.proyectomoviles;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.iteso.proyectomoviles.beans.Summoner;
+import com.iteso.proyectomoviles.Beans.Summoner;
 import com.squareup.picasso.Picasso;
 
 
