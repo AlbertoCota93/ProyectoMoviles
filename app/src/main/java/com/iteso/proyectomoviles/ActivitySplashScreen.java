@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.facebook.AccessToken;
 import com.iteso.proyectomoviles.Beans.User;
 import com.iteso.proyectomoviles.Beans.Utils;
+import com.iteso.proyectomoviles.database.AccountHandler;
+import com.iteso.proyectomoviles.database.DatabaseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,13 +40,15 @@ public class ActivitySplashScreen extends AppCompatActivity {
     public static final String MYPREFERENCES = "com.iteso.proyectomoviles.PREFERENCES";
     String iconId, level, id, name, tier, rank;
     Boolean islogin = false;
-
+    DatabaseHandler dh = DatabaseHandler.getInstance(ActivitySplashScreen.this);
+     ArrayList<String> accounts = new ArrayList<>();
+    String lolAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        if(isNetworkAvailable()) {
+        if(!isNetworkAvailable()) {
             Toast toast = Toast.makeText(ActivitySplashScreen.this,
                     "Necesitas tener conexión a Internet", Toast.LENGTH_LONG);
             toast.show();
@@ -63,9 +68,34 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 User user = loadPreferences();
                 islogin =  user.isLogged();
                 if(user.isLogged()) {
-                    new MyAsyncTask().execute();
+                    AccountHandler ac = new AccountHandler();
+                    accounts = ac.getAccount(dh);
+                    if (accounts.size() != 0) {
+                        lolAccount = accounts.get(0);
+                        new MyAsyncTask().execute();
+                    } else{
+                        Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+                        Bundle bundle =intent.getExtras();
+                        bundle.putString("Logged", "0");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                    }
                 } else {
-                    new MyAsyncTask().execute();//Quitar esto alv cuando este lo de la base de datos
+                    AccountHandler ac = new AccountHandler();
+                    accounts = ac.getAccount(dh);
+                    if (accounts.size() != 0){
+
+                        lolAccount = accounts.get(0);
+                        new MyAsyncTask().execute();
+                    } else{
+                        Intent intent = new Intent(ActivitySplashScreen.this, ActivityMain.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Logged", "0");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                    }
                     //Intent intent = new Intent(ActivitySplashScreen.this, ActivityLogin.class);
                     //startActivity(intent);
                     //finish();
@@ -105,7 +135,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
             try {
 
                 String key = Utils.RIOT_KEY;
-                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ "Reius" + "?api_key=" + key;
+                String urlProfile = "https://la1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ lolAccount + "?api_key=" + key;
 
                 URL url = new URL(urlProfile);
                 String result = downloadUrl(url);

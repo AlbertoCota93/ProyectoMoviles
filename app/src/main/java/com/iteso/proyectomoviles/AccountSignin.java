@@ -3,6 +3,7 @@ package com.iteso.proyectomoviles;
 
 import android.accounts.Account;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import com.iteso.proyectomoviles.database.DatabaseHandler;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountSignin extends Fragment {
+public class AccountSignin extends android.support.v4.app.Fragment {
 
 
 
@@ -47,6 +48,8 @@ public class AccountSignin extends Fragment {
                 acc = lolAcc.getText().toString();
 
                 ac.addAccount(acc, "lol",dh);
+                Intent intent = new Intent(getActivity(), ActivitySplashScreen.class);
+                startActivity(intent);
 
             }
         });

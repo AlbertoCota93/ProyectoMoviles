@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -45,6 +46,10 @@ public class ActivityMain extends AppCompatActivity {
     private Spinner sp;
     private String [] games = {"Lol", "Dota"};
     NavigationView navigationView;
+    FragmentManager manager = getSupportFragmentManager();
+    FragmentTransaction transaction = manager.beginTransaction();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,12 @@ public class ActivityMain extends AppCompatActivity {
         final String name = getIntent().getExtras().getString("name");
         final String tier = getIntent().getExtras().getString("tier");
         final String rank = getIntent().getExtras().getString("rank");
+        final String account = getIntent().getExtras().getString("Logged");
+
+        if (account.equals("0")){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container,new AccountSignin()).commit();
+        }
 
         //spinner = findViewById(R.id.nav_spinner);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -78,9 +89,6 @@ public class ActivityMain extends AppCompatActivity {
                         //Intent intent = new Intent(ActivityMain.this, ActivityLolHome.class);
                         //startActivity(intent);
 
-                        FragmentManager manager = getSupportFragmentManager();
-
-                        FragmentTransaction transaction = manager.beginTransaction();
 
                         FragmentLolHome fHome = new FragmentLolHome();
 
