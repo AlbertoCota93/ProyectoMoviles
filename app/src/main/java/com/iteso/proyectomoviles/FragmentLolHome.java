@@ -42,12 +42,7 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
         flexIcon = view.findViewById(R.id.activity_lol_home_flex_queue);
         soloIcon = view.findViewById(R.id.activity_lol_home_rank);
 
-        //queue = view.findViewById(R.id.activity_lol_home_ranked);
-
         summoner = new Summoner();
-
-        Log.e("HOME", "ENTRO A HOME");
-
         Bundle summonerBundle = getArguments();
 
         summoner.setSummonerIcon(summonerBundle.getString("IconId"));
@@ -79,8 +74,6 @@ public class FragmentLolHome extends android.support.v4.app.Fragment {
 
         String soloQIcon = summoner.getTierSolo().toLowerCase() + "_" + summoner.getRankSolo().toLowerCase();
         String flexQIcon = summoner.getTierFlex().toLowerCase() + "_" + summoner.getRankFlex().toLowerCase();
-
-        Log.e("RANKS", soloQIcon);
 
         switch (soloQIcon){
 

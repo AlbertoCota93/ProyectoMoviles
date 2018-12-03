@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,6 +39,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     String iconId, level, id, name, tierSolo, rankSolo, tierFlex, rankFlex, championId, championLevel;
     Boolean islogin = false;
+    JSONArray matchParticipants, matches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +120,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 level = jsonObject.optString("summonerLevel");
                 id = jsonObject.optString("id");
                 name = jsonObject.optString("name");
+                String accountId = jsonObject.optString("accountId");
 
                 String urlQ = "https://la1.api.riotgames.com/lol/league/v4/positions/by-summoner/" + id + "?api_key=" + key;
 
@@ -167,18 +170,69 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 URL urlMasteries = new URL(urlM);
                 String resultM = downloadUrl(urlMasteries);
 
-                Log.e("Champions", resultM);
-
                 JSONArray jsonArrayMasteries = new JSONArray(resultM);
                 JSONObject jsonObjectMastrie = jsonArrayMasteries.getJSONObject(0);
 
                 championId = jsonObjectMastrie.optString("championId");
                 championLevel = jsonObjectMastrie.optString("championLevel");
 
-                Log.e("Champions", championLevel);
+                String urlMatches = "https://la1.api.riotgames.com/lol/match/v4/matchlists/by-account/"+ accountId +"?endIndex=20&api_key=" + key;
 
-                Log.e("Champions", championId);
+                Log.e("Matches", urlMatches);
 
+                URL urlgetMatches = new URL(urlMatches);
+                String resultMatches = downloadUrl(urlgetMatches);
+
+                Log.e("Matches", resultMatches);
+
+                JSONObject jsonObjectMatches = new JSONObject(resultMatches);
+                JSONArray jsonArrayMatches = jsonObjectMatches.getJSONArray("matches");
+
+                Log.e("Matches", jsonArrayMatches.toString());
+
+                matchParticipants = new JSONArray();
+
+                matches = jsonArrayMatches;
+
+
+                for(int i = 0; i < jsonArrayMatches.length(); i++){
+
+                    JSONObject temp = jsonArrayMatches.getJSONObject(i);
+                    String urlMatch = "https://la1.api.riotgames.com/lol/match/v4/matches/"+ temp.optString("gameId")+"?api_key=" + key;
+
+                    URL urlGetMatch = new URL(urlMatch);
+                    String tempResult = downloadUrl(urlGetMatch);
+
+                    //Log.e("Matches", tempResult);
+
+                    JSONObject jsonObjectParticipantId = new JSONObject(tempResult);
+                    JSONArray jsonArrayParticipants = jsonObjectParticipantId.getJSONArray("participantIdentities");
+
+                    String playerId = "";
+
+                    for(int j = 0; j < jsonArrayParticipants.length(); j++){
+
+                        JSONObject tempP = jsonArrayParticipants.getJSONObject(j);
+                        JSONObject player = tempP.getJSONObject("player");
+
+
+                        if(player.optString("summonerId").equals(id))
+                            playerId = tempP.optString("participantId");
+
+                    }
+
+                    JSONArray participants = jsonObjectParticipantId.getJSONArray("participants");
+
+                    for(int k = 0; k < participants.length(); k++){
+
+                        JSONObject currentParticipant = participants.getJSONObject(k);
+
+                        if(currentParticipant.optString("participantId").equals(playerId))
+                            matchParticipants.put(currentParticipant);
+
+                    }
+
+                }
 
             } catch (MalformedURLException e) {
 
@@ -211,6 +265,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
             mBundle.putString("rankFlex", rankFlex);
             mBundle.putString("championId", championId);
             mBundle.putString("championLevel", championLevel);
+            mBundle.putString("matchParticipants", matchParticipants.toString());
+            mBundle.putString("matches", matches.toString());
             intent.putExtras(mBundle);
             startActivity(intent);
             finish();

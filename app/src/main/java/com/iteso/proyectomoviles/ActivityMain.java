@@ -61,6 +61,9 @@ public class ActivityMain extends AppCompatActivity {
         final String championId = getIntent().getExtras().getString("championId");
         final String championLevel = getIntent().getExtras().getString("championLevel");
 
+        final String matchParticipants = getIntent().getExtras().getString("matchParticipants");
+        final String matches = getIntent().getExtras().getString("matches");
+
         Log.e("champions", championLevel);
 
         //spinner = findViewById(R.id.nav_spinner);
@@ -116,8 +119,19 @@ public class ActivityMain extends AppCompatActivity {
                                 new FragmentSplashScreenInGame()).commit();
                         break;
                     case R.id.nav_history:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                                new FragmentLolHistory()).commit();
+                        FragmentManager managerHistory = getSupportFragmentManager();
+                        FragmentTransaction transactionHistory = managerHistory.beginTransaction();
+                        FragmentLolHistory fHistory = new FragmentLolHistory();
+
+                        Bundle matchBundle = new Bundle();
+                        matchBundle.putString("matchParticipants", matchParticipants);
+                        matchBundle.putString("matches", matches);
+
+                        fHistory.setArguments(matchBundle);
+                        transactionHistory.add(R.id.container, fHistory);
+                        transactionHistory.replace(R.id.container, fHistory);
+                        transactionHistory.commit();
+
                         break;
                     case R.id.nav_dota_history:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,
