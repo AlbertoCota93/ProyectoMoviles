@@ -19,7 +19,7 @@
             android:text="@string/activity_Dota_MatchHistory"
             android:layout_marginTop="@dimen/acitivy_lol_home_text_margintop"
             android:layout_marginLeft="@dimen/profile_margin_left"
-            android:textColor="@color/colorWhite"
+            android:textColor="#000000"
             android:textSize="@dimen/activity_lol_home_text_size_summonerid"
             android:textStyle="bold"
             />
